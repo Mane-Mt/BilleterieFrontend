@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "pokedemo": {
+    "billeterie-frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -34,9 +34,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ]
+            "styles": ["src/material-theme.scss", "src/styles.css"]
           },
           "configurations": {
             "production": {
@@ -64,12 +62,15 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "proxyConfig": "src/proxy.conf.json"
+          },
           "configurations": {
             "production": {
-              "buildTarget": "pokedemo:build:production"
+              "buildTarget": "billeterie-frontend:build:production"
             },
             "development": {
-              "buildTarget": "pokedemo:build:development"
+              "buildTarget": "billeterie-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"

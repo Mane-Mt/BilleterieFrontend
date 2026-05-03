@@ -1,0 +1,15 @@
+<p>component-form works!</p>
+<!-- <br> -->
+<label for="">id</label>
+<input [(ngModel)]="id"> <br>
+<input value="{{id}}" readonly disabled> <br>
+<label for=""> Champ Recherche </label>
+<input [(ngModel)]="searchField"> <br>
+<select [(ngModel)]="id">
+   <option value=""> Selectionner </option>
+     @for (pokemon of pokemons | filterPokemonPipe:'nom':searchField; track $index) {
+        <option value="{{pokemon.id}}">{{pokemon.id}} - {{pokemon.nom}}</option>
+     }
+     
+</select>
+<button (click)="IamClicke()"> Go </button>
