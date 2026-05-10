@@ -1,6 +1,5 @@
 import { NgModule, provideBrowserGlobalErrorListeners, signal } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { MyComponent } from './my-component/my-component';
@@ -16,28 +15,18 @@ import { Concerts } from './concerts/concerts';
 import { UserList } from './users/user-list/user-list';
 import { UserDetails } from './users/user-details/user-details';
 import { UserForm } from './users/user-form/user-form';
-import { RouterModule } from '@angular/router';
 import { Home } from './home/home';
 import { MatIconModule } from '@angular/material/icon';
 import { ConcertCard } from './shared/concert-card/concert-card';
 import { MatCardModule } from '@angular/material/card';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    App,
-    MyComponent,
-    Artiste,
-    ComponentForm,
-    FilterPokemonPipePipe,
-    ConcertList,
-    ConcertDetails,
-    ConcertForm,
-    Concerts,
-    UserList,
-    UserDetails,
-    UserForm,
-    Home,
-    ConcertCard,
+    App, MyComponent, Artiste, ComponentForm,
+    FilterPokemonPipePipe, ConcertList, ConcertDetails,
+    ConcertForm, Concerts, UserList, UserDetails,
+    UserForm, Home, ConcertCard,
   ],
   imports: [
     BrowserModule,
