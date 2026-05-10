@@ -5,8 +5,10 @@ import { ConcertList } from './concerts/concert-list/concert-list';
 import { ComponentForm } from './my-component/component-form/component-form';
 import { UserList } from './users/user-list/user-list';
 import { ConcertForm } from './concerts/concert-form/concert-form';
+import { Home } from './home/home';
 
 const routes: Routes = [
+  { path: '', component: Home },
   { path: 'artiste', component: Artiste },
   {
     path: 'concerts', children: [
@@ -19,7 +21,6 @@ const routes: Routes = [
       { path: '', component: UserList },
     ]
   },
-  { path: '', redirectTo: 'concerts', pathMatch: 'full' }
 ];
 
 @NgModule({
