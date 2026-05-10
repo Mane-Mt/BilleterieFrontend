@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+/* styles.css */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Sora', system-ui, -apple-system, sans-serif;
+  background: #f8f8fb;
+  color: #1a1a2e;
+}
+
+/* Override Material typography */
+.mat-mdc-card {
+  --mdc-elevated-card-container-color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d0cdf5; border-radius: 3px; }
+
+/* Material tweaks */
+.mat-mdc-form-field {
+  font-size: 14px;
+}
+
+.mdc-text-field--outlined .mdc-notched-outline__leading,
+.mdc-text-field--outlined .mdc-notched-outline__notch,
+.mdc-text-field--outlined .mdc-notched-outline__trailing {
+  border-color: #e0e0e0 !important;
+}
+
+.mdc-text-field--outlined:hover .mdc-notched-outline__leading,
+.mdc-text-field--outlined:hover .mdc-notched-outline__notch,
+.mdc-text-field--outlined:hover .mdc-notched-outline__trailing {
+  border-color: #534AB7 !important;
+}

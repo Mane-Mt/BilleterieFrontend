@@ -18,4 +18,9 @@ export class ConcertService {
     return this.http.get<Concert[]>(`${this.baseApiUrl}/concerts`);
   }
 
+  createConcert(concert:Concert): Observable<void> {
+    return this.http.post<void>(`${this.baseApiUrl}/concerts`, concert);
+  }
+
+
 }

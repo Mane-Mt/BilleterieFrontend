@@ -4,13 +4,14 @@ import { Artiste } from './artiste/artiste';
 import { ConcertList } from './concerts/concert-list/concert-list';
 import { ComponentForm } from './my-component/component-form/component-form';
 import { UserList } from './users/user-list/user-list';
+import { ConcertForm } from './concerts/concert-form/concert-form';
 
 const routes: Routes = [
   { path: 'artiste', component: Artiste },
   {
     path: 'concerts', children: [
       { path: '', component: ConcertList },
-      { path: 'create', component: ComponentForm }
+      { path: 'create', component: ConcertForm }
     ]
   },
   {

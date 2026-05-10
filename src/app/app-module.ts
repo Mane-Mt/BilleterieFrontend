@@ -16,8 +16,11 @@ import { Concerts } from './concerts/concerts';
 import { UserList } from './users/user-list/user-list';
 import { UserDetails } from './users/user-details/user-details';
 import { UserForm } from './users/user-form/user-form';
-import { Router, RouterModule } from '@angular/router';
-
+import { RouterModule } from '@angular/router';
+import { Home } from './home/home';
+import { MatIconModule } from '@angular/material/icon';
+import { ConcertCard } from './shared/concert-card/concert-card';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -33,9 +36,17 @@ import { Router, RouterModule } from '@angular/router';
     UserList,
     UserDetails,
     UserForm,
-    
+    Home,
+    ConcertCard,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, BrowserModule, RouterModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    RouterModule,
+    MatIconModule,
+    MatCardModule
+  ],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],
 })

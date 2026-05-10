@@ -1,1 +1,49 @@
-<p>concert-form works!</p>
+<div class="flex flex-col gap-y-4 p-6 max-w-2xl">
+  <h2 class="text-xl font-bold">Nouveau Concert</h2>
+
+  <label for="name">Nom du concert</label>
+  <input [(ngModel)]="name" id="name" type="text" class="rounded border border-slate-300 p-2">
+
+  <label for="description">Description</label>
+  <textarea [(ngModel)]="description" id="description" class="rounded border border-slate-300 p-2" rows="3"></textarea>
+
+  <div class="grid grid-cols-2 gap-4">
+    <div class="flex flex-col gap-y-2">
+      <label for="location">Lieu</label>
+      <input [(ngModel)]="location" id="location" type="text" class="rounded border border-slate-300 p-2">
+    </div>
+
+    <div class="flex flex-col gap-y-2">
+      <label for="musicalGenre">Genre Musical</label>
+      <input [(ngModel)]="musicalGenre" id="musicalGenre" type="text" class="rounded border border-slate-300 p-2">
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 gap-4">
+    <div class="flex flex-col gap-y-2">
+      <label for="placeNumber">Nombre de places</label>
+      <input [(ngModel)]="placeNumber" id="placeNumber" type="number" class="rounded border border-slate-300 p-2">
+    </div>
+
+    <div class="flex flex-col gap-y-2">
+      <label for="price">Prix (€)</label>
+      <input [(ngModel)]="price" id="price" type="number" class="rounded border border-slate-300 p-2">
+    </div>
+  </div>
+
+  <label for="popularity">Popularité (0 à 100)</label>
+  <div class="flex gap-x-4">
+    <input [(ngModel)]="popularity" id="popularity" type="range" min="0" max="100" class="flex-1">
+    <input [(ngModel)]="popularity" id="popularity_value" type="number" min="0" max="100" class="w-20 rounded border border-slate-300 p-2">
+  </div>
+
+  <label for="organizerId">ID Organisateur</label>
+  <input [(ngModel)]="organizerId" id="organizerId" type="text" class="rounded border border-slate-300 p-2">
+
+  <button 
+    (click)="onSubmit()" 
+    [disabled]="!ready()"
+    class="mt-4 bg-blue-600 text-white rounded p-2 font-bold disabled:bg-slate-300 disabled:cursor-not-allowed">
+    Créer le concert
+  </button>
+</div>
