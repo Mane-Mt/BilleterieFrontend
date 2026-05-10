@@ -13,6 +13,11 @@ import { ConcertList } from './concerts/concert-list/concert-list';
 import { ConcertDetails } from './concerts/concert-details/concert-details';
 import { ConcertForm } from './concerts/concert-form/concert-form';
 import { Concerts } from './concerts/concerts';
+import { UserList } from './users/user-list/user-list';
+import { UserDetails } from './users/user-details/user-details';
+import { UserForm } from './users/user-form/user-form';
+import { Router, RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [
@@ -25,8 +30,12 @@ import { Concerts } from './concerts/concerts';
     ConcertDetails,
     ConcertForm,
     Concerts,
+    UserList,
+    UserDetails,
+    UserForm,
+    
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, BrowserModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, BrowserModule, RouterModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],
 })

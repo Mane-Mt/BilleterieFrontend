@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Artiste } from './artiste/artiste';
-import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { ConcertList } from './concerts/concert-list/concert-list';
 import { ComponentForm } from './my-component/component-form/component-form';
+import { UserList } from './users/user-list/user-list';
 
 const routes: Routes = [
   { path: 'artiste', component: Artiste },
@@ -13,7 +13,12 @@ const routes: Routes = [
       { path: 'create', component: ComponentForm }
     ]
   },
-  // {path:'concerts/'}
+  {
+    path: 'users', children: [
+      { path: '', component: UserList },
+    ]
+  },
+  { path: '', redirectTo: 'concerts', pathMatch: 'full' }
 ];
 
 @NgModule({
