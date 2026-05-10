@@ -6,6 +6,7 @@ import { ComponentForm } from './my-component/component-form/component-form';
 import { UserList } from './users/user-list/user-list';
 import { ConcertForm } from './concerts/concert-form/concert-form';
 import { Home } from './home/home';
+import { UserForm } from './users/user-form/user-form';
 
 const routes: Routes = [
   { path: '', component: Home },
@@ -21,6 +22,13 @@ const routes: Routes = [
       { path: '', component: UserList },
     ]
   },
+  {
+  path: 'users', children: [
+    { path: '', component: UserList },
+    { path: 'create', component: UserForm },
+    { path: ':id/edit', component: UserForm }
+  ]
+},
 ];
 
 @NgModule({
