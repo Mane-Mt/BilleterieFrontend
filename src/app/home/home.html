@@ -1,0 +1,79 @@
+<div class="home">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__content">
+      <p class="hero__eyebrow">✦ Ce soir à Paris</p>
+      <h1 class="hero__title">Trouvez votre<br>prochain concert</h1>
+      <p class="hero__subtitle">Plus de 240 événements près de chez vous ce mois-ci</p>
+      <div class="hero__actions">
+        <button mat-flat-button routerLink="/concerts" class="hero__btn-primary">
+          <mat-icon>queue_music</mat-icon>
+          Explorer les concerts
+        </button>
+        <button mat-stroked-button class="hero__btn-ghost">
+          <mat-icon>location_on</mat-icon>
+          Voir ma ville
+        </button>
+      </div>
+    </div>
+    <div class="hero__decoration">
+      <div class="hero__circle hero__circle--1"></div>
+      <div class="hero__circle hero__circle--2"></div>
+      <span class="hero__big-emoji">🎶</span>
+    </div>
+  </section>
+
+  <!-- Stats strip -->
+  <section class="stats-strip">
+    <div class="stat">
+      <span class="stat__value">240+</span>
+      <span class="stat__label">Événements ce mois</span>
+    </div>
+    <div class="stat__divider"></div>
+    <div class="stat">
+      <span class="stat__value">134</span>
+      <span class="stat__label">Artistes</span>
+    </div>
+    <div class="stat__divider"></div>
+    <div class="stat">
+      <span class="stat__value">8 400+</span>
+      <span class="stat__label">Billets vendus</span>
+    </div>
+    <div class="stat__divider"></div>
+    <div class="stat">
+      <span class="stat__value">27</span>
+      <span class="stat__label">Organisateurs</span>
+    </div>
+  </section>
+
+  <!-- Trending -->
+  <section class="section">
+    <div class="section__header">
+      <h2 class="section__title">Tendances cette semaine</h2>
+      <a routerLink="/concerts" mat-button class="section__link">
+        Voir tous <mat-icon>arrow_forward</mat-icon>
+      </a>
+    </div>
+    <div class="concerts-grid">
+         @for (concert of featuredConcerts(); track concert.name) {
+      <app-concert-card 
+        [concert]="concert">
+      </app-concert-card>
+    }
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <div class="cta-banner__text">
+      <h2>Vous êtes organisateur ?</h2>
+      <p>Créez et gérez vos événements en quelques minutes.</p>
+    </div>
+    <button mat-flat-button routerLink="/admin" class="cta-banner__btn">
+      Accéder à l'espace admin
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </section>
+
+</div>

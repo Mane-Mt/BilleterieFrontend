@@ -13,6 +13,10 @@ import { ConcertList } from './concerts/concert-list/concert-list';
 import { ConcertDetails } from './concerts/concert-details/concert-details';
 import { ConcertForm } from './concerts/concert-form/concert-form';
 import { Concerts } from './concerts/concerts';
+import { Home } from './home/home';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { ConcertCard } from './shared/concert-card/concert-card';
+import { MatCard, MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -25,8 +29,10 @@ import { Concerts } from './concerts/concerts';
     ConcertDetails,
     ConcertForm,
     Concerts,
+    Home,
+    ConcertCard,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, BrowserModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, BrowserModule, MatIconModule, MatCardModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],
 })

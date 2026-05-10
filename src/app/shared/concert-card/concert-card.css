@@ -1,0 +1,125 @@
+/* --- Carte de Concert --- */
+.concert-card {
+  font-family: 'Manrope', sans-serif; /* Assurez-vous que Manrope est importé dans index.html */
+  cursor: pointer;
+  border-radius: 14px !important;
+  border: 1px solid #eeeeee;
+  box-shadow: none !important;
+  transition: transform 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.concert-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(83, 74, 183, 0.12) !important;
+}
+
+/* --- Section Image/Emoji --- */
+.concert-card__cover {
+  height: 90px;
+  background: linear-gradient(135deg, #f5f3ff, #eeedfe);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.concert-card__emoji {
+  font-size: 36px;
+}
+
+.concert-card__genre-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.85);
+  color: #534AB7;
+  padding: 3px 8px;
+  border-radius: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* --- Contenu Texte --- */
+.concert-card__content {
+  padding: 14px 16px !important;
+}
+
+.concert-card__artist {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 4px;
+}
+
+.concert-card__venue {
+  font-size: 12px;
+  color: #888;
+  margin: 0 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.concert-card__venue mat-icon {
+  font-size: 13px;
+  width: 13px;
+  height: 13px;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Footer et Prix --- */
+.concert-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.concert-card__price {
+  font-size: 15px;
+  font-weight: 800;
+  color: #534AB7;
+}
+
+.concert-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.concert-card__days {
+  font-size: 11px;
+  color: #aaa;
+  font-weight: 500;
+}
+
+/* --- Badges d'état (Disponibilité) --- */
+.badge {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.badge.ok {
+  background: #EAF3DE;
+  color: #3B6D11;
+}
+
+.badge.warn {
+  background: #FAEEDA;
+  color: #854F0B;
+}
+
+.badge.danger {
+  background: #FCEBEB;
+  color: #A32D2D;
+}
