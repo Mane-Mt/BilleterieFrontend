@@ -1,1 +1,39 @@
-<p>user-details works!</p>
+<nav>
+  <a routerLink="/">Accueil</a>
+  <a routerLink="/concerts">Concerts</a>
+  <a routerLink="/users">Utilisateurs</a>
+</nav>
+
+<div class="user-details-container">
+  @if (user) {
+    <div class="user-card">
+      <div class="user-card__header">
+        <div class="user-card__avatar">
+          {{ user.firstname.charAt(0) }}{{ user.lastname.charAt(0) }}
+        </div>
+        <div>
+          <h2>{{ user.firstname }} {{ user.lastname }}</h2>
+          <span class="user-card__id">ID : {{ user.id }}</span>
+        </div>
+      </div>
+
+      <div class="user-card__info">
+        <div class="info-item">
+          <span class="info-label">Email</span>
+          <span class="info-value">{{ user.email }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Téléphone</span>
+          <span class="info-value">{{ user.phone || 'Non renseigné' }}</span>
+        </div>
+      </div>
+
+      <div class="user-card__actions">
+        <button class="btn-edit" (click)="goEdit()">Modifier</button>
+        <button class="btn-back" (click)="goBack()">Retour</button>
+      </div>
+    </div>
+  } @else {
+    <p>Chargement...</p>
+  }
+</div>
