@@ -1,7 +1,6 @@
 import { Component, inject, Inject, signal } from '@angular/core';
-import { ConcertService } from '../../concert-service';
-import { Concert } from '../../models/concert';
-
+import { ConcertService } from '../../../concert-service';
+import { Concert } from '../../../models/concert';
 @Component({
   selector: 'app-concert-list',
   standalone: false,
@@ -11,12 +10,15 @@ import { Concert } from '../../models/concert';
 export class ConcertList {
   private readonly concertService = inject(ConcertService)
   protected readonly concerts = signal<Concert[]>([]);
- 
+ isLoading = false;
+
   ngOnInit(){
+     this.isLoading = true;
     this.concertService.getConcerts().subscribe({
     next: (concerts) => {
       console.log("concerts received:", concerts);
       this.concerts.set(concerts);
+      this.isLoading = false;
     },
     error: (err) => {
       console.error("error fetching concerts:", err); 

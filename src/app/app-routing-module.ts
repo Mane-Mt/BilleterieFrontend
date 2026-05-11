@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Artiste } from './artiste/artiste';
-import { ConcertList } from './concerts/concert-list/concert-list';
-import { ComponentForm } from './my-component/component-form/component-form';
-import { UserList } from './users/user-list/user-list';
-import { ConcertForm } from './concerts/concert-form/concert-form';
-import { Home } from './home/home';
-import { UserForm } from './users/user-form/user-form';
-import { UserDetails } from './users/user-details/user-details';
+import { ConcertList } from './pages/concerts/concert-list/concert-list';
+import { ConcertForm } from './pages/concerts/concert-form/concert-form';
+import { Home } from './pages/home/home';
+// import { ConcertDetails } from './pages/concerts/concert-details/concert-details';
+import { UserList } from './pages/users/user-list/user-list';
+import { UserForm } from './pages/users/user-form/user-form';
+import { UserDetails } from './pages/users/user-details/user-details';
 
 const routes: Routes = [
   { path: '', component: Home },
@@ -15,7 +15,8 @@ const routes: Routes = [
   {
     path: 'concerts', children: [
       { path: '', component: ConcertList },
-      { path: 'create', component: ConcertForm }
+      { path: 'create', component: ConcertForm },
+      // { path: ':id', component: ConcertDetails }
     ]
   },
   {
@@ -23,13 +24,15 @@ const routes: Routes = [
       { path: '', component: UserList },
     ]
   },
-//   {
-//   path: 'users', children: [
-//     { path: '', component: UserList },
-//     { path: 'create', component: UserForm },
-//     { path: ':id/edit', component: UserForm }
-//   ]
-// },
+  {path:'', component:Home},
+  
+  {
+  path: 'users', children: [
+    { path: '', component: UserList },
+    { path: 'create', component: UserForm },
+    { path: ':id/edit', component: UserForm }
+  ]
+},
 {
   path: 'users', children: [
     { path: '', component: UserList },

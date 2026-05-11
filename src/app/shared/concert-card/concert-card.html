@@ -1,7 +1,7 @@
-<mat-card class="concert-card" [routerLink]="['/concerts', concert]"> 
+<mat-card class="concert-card" [routerLink]="['/concerts', concert.id]"> 
     <!-- concert.id -->
   <div class="concert-card__cover">
-    <span class="concert-card__emoji">{{ concert.name }}</span>
+    <span class="concert-card__emoji"> 🎤 </span>
     <span class="concert-card__genre-badge">{{ concert.musicalGenre }}</span>
   </div>
  
@@ -10,7 +10,7 @@
     <p class="concert-card__venue">
       <mat-icon>location_on</mat-icon>
       {{ concert.location }} · 
-      <!-- {{ concert. | date:'d MMM':'':'fr' }} -->
+      <!-- {{ concert.date | date:'d MMM':'':'fr' }} -->
     </p>
  
     <div class="concert-card__footer">

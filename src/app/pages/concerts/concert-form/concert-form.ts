@@ -1,7 +1,7 @@
 import { Component, signal, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { ConcertService } from '../../concert-service';
 import { FormsModule } from '@angular/forms';
+import { ConcertService } from '../../../concert-service';
 
 @Component({
   selector: 'app-concert-form',
@@ -14,6 +14,7 @@ export class ConcertForm {
   private readonly concertsApiService = inject(ConcertService); // À adapter selon votre service
 
   // Signals pour les champs du formulaire
+  
   readonly name = signal<string>('');
   readonly description = signal<string>('');
   readonly location = signal<string>('');
@@ -21,6 +22,7 @@ export class ConcertForm {
   readonly placeNumber = signal<number>(0);
   readonly popularity = signal<number>(0);
   readonly price = signal<number>(0);
+  readonly date = signal<string>('');
   readonly organizerId = signal<string>('');
 
   // Validation calculée
@@ -44,6 +46,7 @@ export class ConcertForm {
       placeNumber: this.placeNumber(),
       popularity: this.popularity(),
       price: this.price(),
+      date: this.date(),
       organizerId: this.organizerId()
     };
 

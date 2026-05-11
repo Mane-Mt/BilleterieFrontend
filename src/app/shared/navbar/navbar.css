@@ -1,0 +1,103 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  height: 60px;
+  background: #fff;
+  border-bottom: 1px solid #eeeeee;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-right: 24px;
+  text-decoration: none;
+}
+
+.navbar__logo {
+  width: 34px;
+  height: 34px;
+  background: #534ab7;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar__logo mat-icon {
+  color: #fff;
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.navbar__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a2e;
+  letter-spacing: -0.3px;
+}
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.navbar__links a {
+  font-size: 13px;
+  color: #666;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.navbar__links a mat-icon {
+  font-size: 17px;
+  width: 17px;
+  height: 17px;
+}
+
+.navbar__links a.active {
+  color: #534ab7;
+  background: #eeedfe;
+  font-weight: 500;
+}
+
+.navbar__links a.admin-link {
+  color: #854f0b;
+}
+
+.navbar__links a.admin-link.active {
+  background: #faeeda;
+  color: #854f0b;
+}
+
+.navbar__user {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.navbar__user mat-icon {
+  color: #666;
+  font-size: 26px;
+  width: 26px;
+  height: 26px;
+}
+
+.navbar__username {
+  font-size: 13px;
+  color: #444;
+  font-weight: 500;
+}

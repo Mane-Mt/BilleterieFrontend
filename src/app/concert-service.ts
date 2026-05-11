@@ -7,6 +7,10 @@ import { Concert } from './models/concert';
   providedIn: 'root',
 })
 export class ConcertService {
+  buyTicket(id: any, quantity: number) {
+    throw new Error('Method not implemented.');
+  }
+  
   private readonly http = inject(HttpClient)
   private readonly baseApiUrl = 'http://localhost:4200/api'
 
@@ -22,5 +26,7 @@ export class ConcertService {
     return this.http.post<void>(`${this.baseApiUrl}/concerts`, concert);
   }
 
-
+  getConcertById(id: number) {
+    return this.http.get<Concert>(`${this.baseApiUrl}/concerts/${id}`);
+  }
 }

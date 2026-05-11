@@ -1,6 +1,6 @@
-import { Component, OnInit, inject, signal, ChangeDetectorRef } from '@angular/core';
-import { UserService } from '../../user-service';
-import { User } from '../../models/user';
+import { ChangeDetectorRef, Component, OnInit, inject, signal } from '@angular/core';
+import { UserService } from '../../../user-service';
+import { User } from '../../../models/user';
 
 @Component({
   selector: 'app-user-list',
@@ -10,8 +10,8 @@ import { User } from '../../models/user';
 })
 export class UserList implements OnInit {
   users = signal<User[]>([]);
-  private userService = inject(UserService);
   private cdr = inject(ChangeDetectorRef);
+  private userService = inject(UserService);
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe((users: User[]) => {

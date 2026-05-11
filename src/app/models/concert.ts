@@ -1,5 +1,6 @@
 
 export class Concert {
+  id?: number;
   name: string;
   description: string;
   location: string;
@@ -7,6 +8,7 @@ export class Concert {
   placeNumber: number;
   popularity: number;
   price: number;
+  date: string;
   organizerId: string;
 
   constructor(
@@ -17,6 +19,7 @@ export class Concert {
     placeNumber: number,
     popularity: number,
     price: number,
+    date: string,
     organizerId: string
   ) {
     this.name = name;
@@ -26,6 +29,7 @@ export class Concert {
     this.placeNumber = placeNumber;
     this.popularity = popularity;
     this.price = price;
+    this.date = date;
     this.organizerId = organizerId;
   }
 
