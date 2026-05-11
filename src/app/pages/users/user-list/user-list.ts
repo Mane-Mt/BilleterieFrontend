@@ -10,8 +10,8 @@ import { User } from '../../../models/user';
 })
 export class UserList implements OnInit {
   users = signal<User[]>([]);
-  private userService = inject(UserService);
   private cdr = inject(ChangeDetectorRef);
+  private userService = inject(UserService);
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe((users: User[]) => {

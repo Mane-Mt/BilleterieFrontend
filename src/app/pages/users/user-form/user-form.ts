@@ -1,7 +1,7 @@
 import { Component, OnInit, inject, signal, ChangeDetectorRef} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../../user-service';
-import { User } from '../../models/user';
+import { UserService } from '../../../user-service';
+import { User } from '../../../models/user';
 
 
 @Component({
