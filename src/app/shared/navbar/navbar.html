@@ -1,0 +1,30 @@
+<nav class="navbar">
+  <div class="navbar__brand" routerLink="/">
+    <div class="navbar__logo">
+      <mat-icon>music_note</mat-icon>
+    </div>
+    <span class="navbar__title">Stagely</span>
+  </div>
+
+  <div class="navbar__links">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" mat-button>
+      <mat-icon>home</mat-icon> Accueil
+    </a>
+    <a routerLink="/concerts" routerLinkActive="active" mat-button>
+      <mat-icon>queue_music</mat-icon> Concerts
+    </a>
+    <a routerLink="/tickets" routerLinkActive="active" mat-button>
+      <mat-icon>confirmation_number</mat-icon> Mes tickets
+    </a>
+    <a routerLink="/users" routerLinkActive="active" mat-button class="admin-link">
+      <mat-icon>admin_panel_settings</mat-icon> Admin
+    </a>
+  </div>
+
+  <div class="navbar__user">
+    <button mat-icon-button>
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <span class="navbar__username">Alex</span>
+  </div>
+</nav>

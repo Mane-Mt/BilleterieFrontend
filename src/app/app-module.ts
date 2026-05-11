@@ -9,18 +9,20 @@ import { ComponentForm } from './my-component/component-form/component-form';
 import { FormsModule } from '@angular/forms';
 import { FilterPokemonPipePipe } from './filter-pokemon--pipe-pipe';
 import { provideHttpClient } from '@angular/common/http';
-import { ConcertList } from './concerts/concert-list/concert-list';
-import { ConcertDetails } from './concerts/concert-details/concert-details';
-import { ConcertForm } from './concerts/concert-form/concert-form';
-import { Concerts } from './concerts/concerts';
-import { UserList } from './users/user-list/user-list';
-import { UserDetails } from './users/user-details/user-details';
-import { UserForm } from './users/user-form/user-form';
+import { ConcertList } from './pages/concerts/concert-list/concert-list';
+// import { ConcertDetails } from './pages/concerts/concert-details/concert-details';
+import { ConcertForm } from './pages/concerts/concert-form/concert-form';
+import { Concerts } from './pages/concerts/concerts';
+import { UserList } from './pages/users/user-list/user-list';
+import { UserDetails } from './pages/users/user-details/user-details';
+import { UserForm } from './pages/users/user-form/user-form';
 import { RouterModule } from '@angular/router';
-import { Home } from './home/home';
+import { Home } from './pages/home/home';
 import { MatIconModule } from '@angular/material/icon';
 import { ConcertCard } from './shared/concert-card/concert-card';
 import { MatCardModule } from '@angular/material/card';
+import { Navbar } from './shared/navbar/navbar';
+import { MatProgressSpinnerModule, MatSpinner } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,7 @@ import { MatCardModule } from '@angular/material/card';
     ComponentForm,
     FilterPokemonPipePipe,
     ConcertList,
-    ConcertDetails,
+    // ConcertDetails,
     ConcertForm,
     Concerts,
     UserList,
@@ -38,6 +40,7 @@ import { MatCardModule } from '@angular/material/card';
     UserForm,
     Home,
     ConcertCard,
+    Navbar,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,8 @@ import { MatCardModule } from '@angular/material/card';
     FormsModule,
     RouterModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule
   ],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],

@@ -1,0 +1,127 @@
+<!-- <div class="concert-container">
+  <h2>Liste des Concerts</h2>
+
+  <table class="concert-table">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Genre</th>
+        <th>Lieu</th>
+        <th>Description</th>
+        <th>Places</th>
+        <th>Prix</th>
+        <th>Popularité</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (concert of concerts(); track concert.name) {
+        <tr>
+          <td><strong>{{ concert.name }}</strong></td>
+          <td><span class="badge">{{ concert.musicalGenre }}</span></td>
+          <td>{{ concert.location }}</td>
+          <td>{{ concert.description }}</td>
+          <td>{{ concert.placeNumber }}</td>
+          <td>{{ concert.price }}€</td>
+          <td>{{ concert.popularity }}/10</td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="7">Aucun concert trouvé.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div> -->
+
+<div class="concerts-page">
+
+  <div class="concerts-page__header">
+    <h1>Concerts</h1>
+    <span class="concerts-page__count">{{ concerts().length }} événements trouvés</span>
+  </div>
+
+  <!-- Search & Filters -->
+  <!-- <div class="filters-bar">
+    <mat-form-field appearance="outline" class="filters-bar__search">
+      <mat-label>Rechercher un artiste, un lieu…</mat-label>
+      <mat-icon matPrefix>search</mat-icon>
+      <input matInput [formControl]="searchControl" />
+      <button *ngIf="searchControl.value" mat-icon-button matSuffix (click)="searchControl.setValue('')">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="filters-bar__sort">
+      <mat-label>Trier par</mat-label>
+      <mat-select [(value)]="selectedSort" (selectionChange)="applySort($event.value)">
+        <mat-option *ngFor="let o of sortOptions" [value]="o.value">{{ o.label }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div> -->
+
+  <!-- Genre chips -->
+  <!-- <div class="genre-chips">
+    <mat-chip-listbox>
+      <mat-chip-option
+        *ngFor="let genre of genres"
+        [selected]="selectedGenre === genre"
+        (click)="selectGenre(genre)">
+        {{ genre }}
+      </mat-chip-option>
+    </mat-chip-listbox>
+
+    <div class="price-filter">
+      <span class="price-filter__label">Prix max : <strong>{{ maxPriceControl.value }} €</strong></span>
+      <mat-slider min="10" max="200" step="5" class="price-filter__slider">
+        <input matSliderThumb [formControl]="maxPriceControl" (change)="loadConcerts()" />
+      </mat-slider>
+    </div>
+
+    <button mat-button class="clear-btn" (click)="clearFilters()">
+      <mat-icon>filter_list_off</mat-icon> Réinitialiser
+    </button>
+  </div> -->
+
+  <!-- Loading -->
+   @if (isLoading) {
+    <div  class="loading">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+   }
+
+ 
+  
+
+  <!-- Empty state -->
+  <!-- <div *ngIf="!isLoading && concerts.length === 0" class="empty-state">
+    <span class="empty-state__emoji">🎵</span>
+    <h3>Aucun concert trouvé</h3>
+    <p>Essayez de modifier vos filtres</p>
+    <button mat-flat-button (click)="clearFilters()">Voir tous les concerts</button>
+  </div> -->
+
+  <!-- List -->
+   @for (concert of concerts(); track concert.name) {
+  <div  class="concerts-list">
+    <div class="concert-row"  [routerLink]="['/concerts', concert.id]">
+      <div class="concert-row__thumb"> 🎤 </div>
+      <div class="concert-row__info">
+        <span class="concert-row__artist">{{ concert.name }}</span>
+        <span class="concert-row__venue">
+          <mat-icon>location_on</mat-icon>
+          {{ concert.location }} 
+          <!-- · {{ concert.date | date:'d MMMM yyyy':'':'fr' }} -->
+        </span>
+      </div>
+      <div class="concert-row__genre">{{ concert.musicalGenre }}</div>
+      <div class="concert-row__right">
+        <span class="concert-row__price">{{ concert.price }} €</span>
+        <!-- <span class="badge" [ngClass]="getAvailabilityClass(concert)">{{ getAvailabilityLabel(concert) }}</span> -->
+      </div>
+      <mat-icon class="concert-row__arrow">chevron_right</mat-icon>
+    </div>
+  </div>
+  }
+
+    
+</div>

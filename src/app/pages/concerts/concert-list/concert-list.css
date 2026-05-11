@@ -1,0 +1,227 @@
+.concerts-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px 60px;
+}
+
+.concerts-page__header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.concerts-page__header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.concerts-page__count {
+  font-size: 13px;
+  color: #888;
+}
+
+/* Filters bar */
+.filters-bar {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.filters-bar__search {
+  flex: 1;
+  min-width: 240px;
+}
+
+.filters-bar__sort {
+  width: 180px;
+}
+
+/* Genre chips */
+.genre-chips {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+/* Price filter */
+.price-filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.price-filter__label {
+  font-size: 13px;
+  color: #555;
+  white-space: nowrap;
+}
+
+.price-filter__slider {
+  width: 120px;
+}
+
+/* Clear button */
+.clear-btn {
+  color: #888 !important;
+  font-size: 13px !important;
+}
+
+.clear-btn mat-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+}
+
+/* Loading */
+.loading {
+  display: flex;
+  justify-content: center;
+  padding: 60px 0;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 60px 0;
+}
+
+.empty-state__emoji {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.empty-state h3 {
+  font-size: 18px;
+  color: #1a1a2e;
+  margin: 0 0 8px;
+}
+
+.empty-state p {
+  color: #888;
+  margin: 0 0 20px;
+}
+
+/* List */
+.concerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.concert-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 14px 18px;
+  margin: 5px 0;
+  cursor: pointer;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.concert-row:hover {
+  border-color: #d4d0f5;
+  box-shadow: 0 4px 14px rgba(83, 74, 183, 0.08);
+}
+
+.concert-row__thumb {
+  width: 46px;
+  height: 46px;
+  background: #f5f3ff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.concert-row__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.concert-row__artist {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.concert-row__venue {
+  font-size: 12px;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.concert-row__venue mat-icon {
+  font-size: 13px;
+  width: 13px;
+  height: 13px;
+}
+
+.concert-row__genre {
+  font-size: 12px;
+  color: #534ab7;
+  background: #f0effd;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.concert-row__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.concert-row__price {
+  font-size: 15px;
+  font-weight: 700;
+  color: #534ab7;
+}
+
+.concert-row__arrow {
+  color: #ccc;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+/* Badges */
+.badge {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.badge.ok {
+  background: #eaf3de;
+  color: #3b6d11;
+}
+
+.badge.warn {
+  background: #faeeda;
+  color: #854f0b;
+}
+
+.badge.danger {
+  background: #fcebeb;
+  color: #a32d2d;
+}
