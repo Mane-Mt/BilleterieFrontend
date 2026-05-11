@@ -23,13 +23,13 @@ const routes: Routes = [
       { path: '', component: UserList },
     ]
   },
-  {
-  path: 'users', children: [
-    { path: '', component: UserList },
-    { path: 'create', component: UserForm },
-    { path: ':id/edit', component: UserForm }
-  ]
-},
+//   {
+//   path: 'users', children: [
+//     { path: '', component: UserList },
+//     { path: 'create', component: UserForm },
+//     { path: ':id/edit', component: UserForm }
+//   ]
+// },
 {
   path: 'users', children: [
     { path: '', component: UserList },
