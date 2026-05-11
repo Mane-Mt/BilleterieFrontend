@@ -9,7 +9,6 @@ import { FormsModule } from '@angular/forms';
 import { FilterPokemonPipePipe } from './filter-pokemon--pipe-pipe';
 import { provideHttpClient } from '@angular/common/http';
 import { ConcertList } from './pages/concerts/concert-list/concert-list';
-// import { ConcertDetails } from './pages/concerts/concert-details/concert-details';
 import { ConcertForm } from './pages/concerts/concert-form/concert-form';
 import { Concerts } from './pages/concerts/concerts';
 import { UserList } from './pages/users/user-list/user-list';
@@ -21,7 +20,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { ConcertCard } from './shared/concert-card/concert-card';
 import { MatCardModule } from '@angular/material/card';
 import { Navbar } from './shared/navbar/navbar';
-import { MatProgressSpinnerModule, MatSpinner } from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AdminDashboard } from './pages/admin/admin-dashboard/admin-dashboard';
+import { AdminConcerts } from './pages/admin/admin-concerts/admin-concerts';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,6 @@ import { MatProgressSpinnerModule, MatSpinner } from '@angular/material/progress
     ComponentForm,
     FilterPokemonPipePipe,
     ConcertList,
-    // ConcertDetails,
     ConcertForm,
     Concerts,
     UserList,
@@ -40,6 +40,8 @@ import { MatProgressSpinnerModule, MatSpinner } from '@angular/material/progress
     Home,
     ConcertCard,
     Navbar,
+    AdminDashboard,
+    AdminConcerts,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,7 @@ import { MatProgressSpinnerModule, MatSpinner } from '@angular/material/progress
     RouterModule,
     MatIconModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],

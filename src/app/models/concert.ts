@@ -1,4 +1,3 @@
-
 export class Concert {
   id?: number;
   name: string;
@@ -10,6 +9,7 @@ export class Concert {
   price: number;
   date: string;
   organizerId: string;
+  isValidated?: boolean; 
 
   constructor(
     name: string,
@@ -20,7 +20,8 @@ export class Concert {
     popularity: number,
     price: number,
     date: string,
-    organizerId: string
+    organizerId: string,
+    isValidated?: boolean  
   ) {
     this.name = name;
     this.description = description;
@@ -31,6 +32,6 @@ export class Concert {
     this.price = price;
     this.date = date;
     this.organizerId = organizerId;
+    this.isValidated = isValidated;  
   }
-
 }

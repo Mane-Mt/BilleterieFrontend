@@ -1,0 +1,100 @@
+.admin-concerts-container {
+  font-family: 'Manrope', sans-serif;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 32px;
+}
+
+.admin-concerts-container h2 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin-bottom: 32px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(83, 74, 183, 0.08);
+}
+
+thead {
+  background: linear-gradient(135deg, #f5f3ff, #eeedfe);
+}
+
+th {
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  color: #534AB7;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+td {
+  padding: 14px 16px;
+  font-size: 14px;
+  color: #1a1a2e;
+  border-top: 1px solid #eeeeee;
+}
+
+tr:hover {
+  background-color: #f9f8ff;
+}
+
+/* --- Badges --- */
+.badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.badge-ok {
+  background: #EAF3DE;
+  color: #3B6D11;
+}
+
+.badge-warn {
+  background: #FAEEDA;
+  color: #854F0B;
+}
+
+/* --- Boutons --- */
+.btn-validate {
+  background: #EAF3DE;
+  color: #3B6D11;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 6px;
+  transition: background 0.2s;
+}
+
+.btn-validate:hover {
+  background: #d4e8c2;
+}
+
+.btn-delete {
+  background: #FCEBEB;
+  color: #A32D2D;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-delete:hover {
+  background: #f5d0d0;
+}
