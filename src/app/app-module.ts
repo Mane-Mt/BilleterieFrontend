@@ -23,6 +23,9 @@ import { Navbar } from './shared/navbar/navbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AdminDashboard } from './pages/admin/admin-dashboard/admin-dashboard';
 import { AdminConcerts } from './pages/admin/admin-concerts/admin-concerts';
+import { OrganizerList } from './pages/organizers/organizer-list/organizer-list';
+import { OrganizerDetails } from './pages/organizers/organizer-details/organizer-details';
+import { OrganizerForm } from './pages/organizers/organizer-form/organizer-form';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,9 @@ import { AdminConcerts } from './pages/admin/admin-concerts/admin-concerts';
     Navbar,
     AdminDashboard,
     AdminConcerts,
+    OrganizerList,
+    OrganizerDetails,
+    OrganizerForm,
   ],
   imports: [
     BrowserModule,
