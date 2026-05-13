@@ -1,0 +1,45 @@
+<div class="admin-concerts-container">
+  <h2>Gestion des concerts</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Lieu</th>
+        <th>Genre</th>
+        <th>Prix</th>
+        <th>Places</th>
+        <th>Statut</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (concert of concerts(); track concert.name) {
+        <tr>
+          <td>{{ concert.name }}</td>
+          <td>{{ concert.location }}</td>
+          <td>{{ concert.musicalGenre }}</td>
+          <td>{{ concert.price }} €</td>
+          <td>{{ concert.placeNumber }}</td>
+          <td>
+            @if (concert.isValidated) {
+              <span class="badge badge-ok">Validé</span>
+            } @else {
+              <span class="badge badge-warn">À valider</span>
+            }
+          </td>
+          <td>
+            @if (!concert.isValidated) {
+              <button class="btn-validate" (click)="validateConcert(concert.id!)">
+                Valider
+              </button>
+            }
+            <button class="btn-delete" (click)="deleteConcert(concert.id!)">
+              Supprimer
+            </button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

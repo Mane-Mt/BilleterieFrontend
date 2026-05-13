@@ -1,0 +1,34 @@
+<div class="organizer-list-container">
+  <h2>Liste des organisateurs</h2>
+
+  <button class="btn-create" routerLink="/organizers/create">+ Créer un organisateur</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Téléphone</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (organizer of organizers(); track organizer.id) {
+        <tr>
+          <td>{{ organizer.id }}</td>
+          <td>{{ organizer.firstname }}</td>
+          <td>{{ organizer.lastname }}</td>
+          <td>{{ organizer.email }}</td>
+          <td>{{ organizer.phone }}</td>
+          <td>
+            <a class="btn-voir" routerLink="/organizers/{{ organizer.id }}">Voir</a>
+            <a class="btn-modifier" routerLink="/organizers/{{ organizer.id }}/edit">Modifier</a>
+            <button class="btn-supprimer" (click)="deleteOrganizer(organizer.id!)">Supprimer</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

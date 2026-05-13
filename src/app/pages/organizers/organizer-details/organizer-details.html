@@ -1,0 +1,33 @@
+<div class="organizer-details-container">
+  @if (organizer) {
+    <div class="organizer-card">
+      <div class="organizer-card__header">
+        <div class="organizer-card__avatar">
+          {{ organizer.firstname.charAt(0) }}{{ organizer.lastname.charAt(0) }}
+        </div>
+        <div>
+          <h2>{{ organizer.firstname }} {{ organizer.lastname }}</h2>
+          <span class="organizer-card__id">ID : {{ organizer.id }}</span>
+        </div>
+      </div>
+
+      <div class="organizer-card__info">
+        <div class="info-item">
+          <span class="info-label">Email</span>
+          <span class="info-value">{{ organizer.email }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Téléphone</span>
+          <span class="info-value">{{ organizer.phone || 'Non renseigné' }}</span>
+        </div>
+      </div>
+
+      <div class="organizer-card__actions">
+        <button class="btn-edit" (click)="goEdit()">Modifier</button>
+        <button class="btn-back" (click)="goBack()">Retour</button>
+      </div>
+    </div>
+  } @else {
+    <p>Chargement...</p>
+  }
+</div>

@@ -9,7 +9,6 @@ import { FormsModule } from '@angular/forms';
 import { FilterPokemonPipePipe } from './filter-pokemon--pipe-pipe';
 import { provideHttpClient } from '@angular/common/http';
 import { ConcertList } from './pages/concerts/concert-list/concert-list';
-// import { ConcertDetails } from './pages/concerts/concert-details/concert-details';
 import { ConcertForm } from './pages/concerts/concert-form/concert-form';
 import { Concerts } from './pages/concerts/concerts';
 import { UserList } from './pages/users/user-list/user-list';
@@ -35,6 +34,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ConcertDetails } from './pages/concerts/concert-details/concert-details';
+import { AdminDashboard } from './pages/admin/admin-dashboard/admin-dashboard';
+import { AdminConcerts } from './pages/admin/admin-concerts/admin-concerts';
+import { OrganizerList } from './pages/organizers/organizer-list/organizer-list';
+import { OrganizerDetails } from './pages/organizers/organizer-details/organizer-details';
+import { OrganizerForm } from './pages/organizers/organizer-form/organizer-form';
+
 const MATERIAL = [
   MatButtonModule, MatCardModule, MatChipsModule, MatDialogModule,
   MatFormFieldModule, MatIconModule, MatInputModule, MatProgressBarModule,
@@ -58,6 +63,11 @@ const MATERIAL = [
     Home,
     ConcertCard,
     Navbar,
+    AdminDashboard,
+    AdminConcerts,
+    OrganizerList,
+    OrganizerDetails,
+    OrganizerForm,
   ],
   imports: [
     BrowserModule,
