@@ -39,12 +39,24 @@ import { AdminConcerts } from './pages/admin/admin-concerts/admin-concerts';
 import { OrganizerList } from './pages/organizers/organizer-list/organizer-list';
 import { OrganizerDetails } from './pages/organizers/organizer-details/organizer-details';
 import { OrganizerForm } from './pages/organizers/organizer-form/organizer-form';
+import { PurchaseConfirmDialog } from './shared/purchase-confirm-dialog/purchase-confirm-dialog';
 
 const MATERIAL = [
-  MatButtonModule, MatCardModule, MatChipsModule, MatDialogModule,
-  MatFormFieldModule, MatIconModule, MatInputModule, MatProgressBarModule,
-  MatProgressSpinnerModule, MatSelectModule, MatSliderModule,
-  MatSnackBarModule, MatTableModule, MatTabsModule, MatTooltipModule,
+  MatButtonModule,
+  MatCardModule,
+  MatChipsModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatSelectModule,
+  MatSliderModule,
+  MatSnackBarModule,
+  MatTableModule,
+  MatTabsModule,
+  MatTooltipModule,
 ];
 @NgModule({
   declarations: [
@@ -68,6 +80,7 @@ const MATERIAL = [
     OrganizerList,
     OrganizerDetails,
     OrganizerForm,
+    PurchaseConfirmDialog,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +88,7 @@ const MATERIAL = [
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-   ...MATERIAL
+    ...MATERIAL,
   ],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],

@@ -1,0 +1,64 @@
+<div class="dialog-container">
+
+  <!-- Success header -->
+  <div class="success-header">
+    <div class="success-icon">
+      <mat-icon>check_circle</mat-icon>
+    </div>
+    <span class="success-badge">Commande confirmée</span>
+  </div>
+
+  <h2 class="dialog-title">Vos tickets sont réservés !</h2>
+  <p class="dialog-subtitle">
+    Retrouvez-les à tout moment depuis <strong>Mes tickets</strong> avec votre email :
+  </p>
+
+  <!-- Email chip -->
+  <div class="email-chip">
+    <mat-icon>mail_outline</mat-icon>
+    {{ data.email }}
+  </div>
+
+  <!-- Ticket preview -->
+  <div class="ticket-preview">
+    <div class="ticket-preview__top">
+      <span class="ticket-preview__emoji">{{ data.ticket.concert.image }}</span>
+      <div class="ticket-preview__info">
+        <span class="ticket-preview__artist">{{ data.ticket.concert.name }}</span>
+        <span class="ticket-preview__meta">
+          {{ data.ticket.concert.location }} · {{ data.ticket.concert.date | date:'d MMM yyyy':'':'fr' }}
+          · ×{{ data.ticket.quantity }}
+        </span>
+      </div>
+      <div class="ticket-preview__qr">
+        <mat-icon>qr_code</mat-icon>
+      </div>
+    </div>
+    <div class="ticket-preview__divider"></div>
+    <div class="ticket-preview__bottom">
+      <span class="ticket-preview__ref">{{'#djkdkdld' }}</span>
+      <span class="ticket-preview__price">{{ 10 | number:'1.2-2' }} €</span>
+    </div>
+  </div>
+
+  <!-- Info block -->
+  <div class="info-block">
+    <mat-icon>lightbulb_outline</mat-icon>
+    <span>
+      Pour retrouver vos tickets ultérieurement, rendez-vous dans
+      <strong>Mes tickets</strong> et renseignez l'email utilisé lors de l'achat.
+    </span>
+  </div>
+
+  <!-- Actions -->
+  <div class="dialog-actions">
+    <button mat-stroked-button class="btn-secondary" (click)="close()">
+      Continuer les achats
+    </button>
+    <button mat-flat-button class="btn-primary" (click)="goToTickets()">
+      <mat-icon>confirmation_number</mat-icon>
+      Voir mes tickets
+    </button>
+  </div>
+
+</div>

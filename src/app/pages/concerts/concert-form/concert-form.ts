@@ -15,8 +15,8 @@ export class ConcertForm {
   private readonly concertsApiService = inject(ConcertService); // À adapter selon votre service
 
   // Signals pour les champs du formulaire
-  
   readonly name = signal<string>('');
+  readonly image = signal<string>('');
   readonly description = signal<string>('');
   readonly location = signal<string>('');
   readonly musicalGenre = signal<string>('');
@@ -40,6 +40,7 @@ export class ConcertForm {
     }
 
     const concert = {
+      image : this.image(),
       name: this.name(),
       description: this.description(),
       location: this.location(),

@@ -2,6 +2,7 @@ export class Concert {
   id?: number;
 
   constructor(
+    public image:string = '🎤',
     public name: string = '',
     public description: string = '',
     public location: string = '',
