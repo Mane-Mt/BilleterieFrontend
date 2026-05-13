@@ -1,7 +1,7 @@
 import { Component, signal, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { ConcertService } from '../../../concert-service';
+import { ConcertService } from '../../../services/concert-service';
 
 @Component({
   selector: 'app-concert-form',
@@ -44,6 +44,7 @@ export class ConcertForm {
       location: this.location(),
       musicalGenre: this.musicalGenre(),
       placeNumber: this.placeNumber(),
+      availableTickets: this.placeNumber(),
       popularity: this.popularity(),
       price: this.price(),
       date: this.date(),

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { Pokemon } from '../../pokemon';
-import { PokeApiService } from '../../poke-api-service';
+import { PokeApiService } from '../../services/poke-api-service';
+import { Pokemon } from '../../models/pokemon';
 
 @Component({
   selector: 'app-component-form',

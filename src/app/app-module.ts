@@ -22,7 +22,25 @@ import { ConcertCard } from './shared/concert-card/concert-card';
 import { MatCardModule } from '@angular/material/card';
 import { Navbar } from './shared/navbar/navbar';
 import { MatProgressSpinnerModule, MatSpinner } from '@angular/material/progress-spinner';
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ConcertDetails } from './pages/concerts/concert-details/concert-details';
+const MATERIAL = [
+  MatButtonModule, MatCardModule, MatChipsModule, MatDialogModule,
+  MatFormFieldModule, MatIconModule, MatInputModule, MatProgressBarModule,
+  MatProgressSpinnerModule, MatSelectModule, MatSliderModule,
+  MatSnackBarModule, MatTableModule, MatTabsModule, MatTooltipModule,
+];
 @NgModule({
   declarations: [
     App,
@@ -31,7 +49,7 @@ import { MatProgressSpinnerModule, MatSpinner } from '@angular/material/progress
     ComponentForm,
     FilterPokemonPipePipe,
     ConcertList,
-    // ConcertDetails,
+    ConcertDetails,
     ConcertForm,
     Concerts,
     UserList,
@@ -46,9 +64,7 @@ import { MatProgressSpinnerModule, MatSpinner } from '@angular/material/progress
     AppRoutingModule,
     FormsModule,
     RouterModule,
-    MatIconModule,
-    MatCardModule,
-    MatProgressSpinnerModule
+   ...MATERIAL
   ],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],

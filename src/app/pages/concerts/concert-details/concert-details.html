@@ -1,1 +1,106 @@
-<p>concert-details works!</p>
+<div class="detail-page">
+
+  <!-- Back -->
+  <button mat-button class="back-btn" routerLink="/concerts">
+    <mat-icon>arrow_back</mat-icon> Retour aux concerts
+  </button>
+@if(isLoading()){
+  <div class="loading">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+}@else if(!concert){
+  <div  class="not-found">
+    <span>🎵</span>
+    <h3>Concert introuvable</h3>
+    <button mat-flat-button routerLink="/concerts">Voir tous les concerts</button>
+  </div>
+} @else {
+  <ng-container *ngIf="concert">
+
+    <!-- Hero -->
+    <div class="detail-hero">
+       <div class="detail-hero__emoji">🎤 </div> <!--{{ concert.emoji }} -->
+      <div class="detail-hero__info">
+        <span class="detail-hero__genre">{{ concert.musicalGenre }}</span>
+        <h1 class="detail-hero__title">{{ concert.name }}</h1>
+        <div class="detail-hero__meta">
+          <span><mat-icon>location_on</mat-icon>{{ concert.location }}</span>
+          <span><mat-icon>calendar_today</mat-icon>{{ concert.date  }}</span>
+          <span><mat-icon>access_time</mat-icon>{{ 4}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-body">
+
+      <!-- Info grid -->
+      <div class="info-grid">
+        <div class="info-box">
+          <span class="info-box__label">Prix par place</span>
+          <span class="info-box__value purple">{{ concert.price }} €</span>
+        </div>
+        <div class="info-box">
+          <span class="info-box__label">Places restantes</span>
+          <span class="info-box__value" [class.warn]="concert.availableTickets < 50">
+            {{ concert.availableTickets === 0 ? 'Complet' : concert.availableTickets }}
+          </span>
+        </div>
+        <div class="info-box">
+          <span class="info-box__label">Organisateur</span>
+          <span class="info-box__value small">Moi</span>
+          <!--{{  }} concert.organizer -->
+        </div>
+        <div class="info-box">
+          <span class="info-box__label">Taux de remplissage</span>
+          <div class="info-box__progress">
+            <mat-progress-bar mode="determinate" [value]="occupancyPercent"></mat-progress-bar>
+            <span>{{ occupancyPercent }} %</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buy block -->
+      <mat-card class="buy-block" *ngIf="concert.availableTickets > 0">
+        <mat-card-header>
+          <mat-card-title>Acheter des tickets</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="qty-row">
+            <span class="qty-row__label">Quantité</span>
+            <div class="qty-row__controls">
+              <button mat-icon-button (click)="decrement()" [disabled]="quantity() <= 1">
+                <mat-icon>remove</mat-icon>
+              </button>
+              <span class="qty-row__num">{{ quantity() }}</span>
+              <button mat-icon-button (click)="increment()" [disabled]="quantity() >= 8">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+            <span class="qty-row__total">{{ totalPrice | number:'1.2-2' }} €</span>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button
+            mat-flat-button
+            class="buy-btn"
+            (click)="buy()"
+            [disabled]="isBuying">
+            <mat-spinner *ngIf="isBuying" diameter="18"></mat-spinner>
+            <mat-icon *ngIf="!isBuying">confirmation_number</mat-icon>
+            {{ isBuying() ? 'Traitement...' : 'Confirmer l\'achat' }}
+          </button>
+        </mat-card-actions>
+      </mat-card>
+
+      <div class="sold-out-block" *ngIf="concert.availableTickets === 0">
+        <mat-icon>block</mat-icon>
+        <div>
+          <strong>Événement complet</strong>
+          <p>Toutes les places ont été vendues.</p>
+        </div>
+      </div>
+
+    </div>
+  </ng-container>
+  }
+</div>

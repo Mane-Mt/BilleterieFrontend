@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit, inject, signal } from '@angular/core';
-import { UserService } from '../../../user-service';
 import { User } from '../../../models/user';
+import { UserService } from '../../../services/user-service';
 
 @Component({
   selector: 'app-user-list',

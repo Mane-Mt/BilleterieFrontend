@@ -6,6 +6,7 @@ export class Concert {
   location: string;
   musicalGenre: string;
   placeNumber: number;
+  availableTickets : number;
   popularity: number;
   price: number;
   date: string;
@@ -20,7 +21,8 @@ export class Concert {
     popularity: number,
     price: number,
     date: string,
-    organizerId: string
+    organizerId: string,
+    availableTickets : number
   ) {
     this.name = name;
     this.description = description;
@@ -31,6 +33,7 @@ export class Concert {
     this.price = price;
     this.date = date;
     this.organizerId = organizerId;
+    this.availableTickets = availableTickets;
   }
 
 }

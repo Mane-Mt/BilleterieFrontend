@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
-import { ConcertService } from '../../concert-service';
 import { Concert } from '../../models/concert';
+import { ConcertService } from '../../services/concert-service';
 
 @Component({
   selector: 'app-home',

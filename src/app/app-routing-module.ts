@@ -8,6 +8,7 @@ import { Home } from './pages/home/home';
 import { UserList } from './pages/users/user-list/user-list';
 import { UserForm } from './pages/users/user-form/user-form';
 import { UserDetails } from './pages/users/user-details/user-details';
+import { ConcertDetails } from './pages/concerts/concert-details/concert-details';
 
 const routes: Routes = [
   { path: '', component: Home },
@@ -16,7 +17,7 @@ const routes: Routes = [
     path: 'concerts', children: [
       { path: '', component: ConcertList },
       { path: 'create', component: ConcertForm },
-      // { path: ':id', component: ConcertDetails }
+      { path: ':id', component: ConcertDetails }
     ]
   },
   {

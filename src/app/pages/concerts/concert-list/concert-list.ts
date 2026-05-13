@@ -1,6 +1,6 @@
 import { Component, inject, Inject, signal } from '@angular/core';
-import { ConcertService } from '../../../concert-service';
 import { Concert } from '../../../models/concert';
+import { ConcertService } from '../../../services/concert-service';
 @Component({
   selector: 'app-concert-list',
   standalone: false,
