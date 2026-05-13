@@ -13,12 +13,27 @@
 
   <div class="form-group">
     <label>Email</label>
-    <input type="email" [(ngModel)]="email" placeholder="Email" />
+    <input
+      type="email"
+      [(ngModel)]="email"
+      placeholder="exemple@email.com"
+    />
+    @if (email && !isValidEmail()) {
+      <span class="error">Email invalide</span>
+    }
   </div>
 
   <div class="form-group">
     <label>Téléphone</label>
-    <input type="text" [(ngModel)]="phone" placeholder="Téléphone" />
+    <input
+      type="tel"
+      [(ngModel)]="phone"
+      placeholder="0612345678"
+      maxlength="10"
+    />
+    @if (phone && !isValidPhone()) {
+      <span class="error">Téléphone invalide — 10 chiffres requis</span>
+    }
   </div>
 
   <div class="form-actions">
