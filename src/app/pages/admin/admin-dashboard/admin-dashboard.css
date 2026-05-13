@@ -1,22 +1,3 @@
-nav {
-  display: flex;
-  gap: 20px;
-  padding: 16px 32px;
-  background: #ffffff;
-  border-bottom: 1px solid #eeeeee;
-}
-
-nav a {
-  text-decoration: none;
-  color: #534AB7;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-nav a:hover {
-  color: #3f37a0;
-}
-
 .dashboard-container {
   font-family: 'Manrope', sans-serif;
   max-width: 1200px;
@@ -48,11 +29,13 @@ nav a:hover {
   align-items: center;
   gap: 8px;
   box-shadow: 0 2px 12px rgba(83, 74, 183, 0.08);
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
 }
 
 .stat-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(83, 74, 183, 0.15);
 }
 
 .stat-icon {
@@ -73,24 +56,101 @@ nav a:hover {
   letter-spacing: 0.04em;
 }
 
-/* --- Actions --- */
-.dashboard-actions {
-  display: flex;
-  gap: 16px;
+/* --- Recent Section --- */
+.recent-section {
+  margin-top: 40px;
 }
 
-.btn-manage {
-  background-color: #534AB7;
-  color: white;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 10px;
-  font-size: 15px;
+.recent-section h3 {
+  font-size: 20px;
   font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(83, 74, 183, 0.08);
+}
+
+thead {
+  background: linear-gradient(135deg, #f5f3ff, #eeedfe);
+}
+
+th {
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  color: #534AB7;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+td {
+  padding: 14px 16px;
+  font-size: 14px;
+  color: #1a1a2e;
+  border-top: 1px solid #eeeeee;
+}
+
+tr:hover {
+  background-color: #f9f8ff;
+}
+
+/* --- Badges --- */
+.badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.badge-ok {
+  background: #EAF3DE;
+  color: #3B6D11;
+}
+
+.badge-warn {
+  background: #FAEEDA;
+  color: #854F0B;
+}
+
+/* --- Boutons --- */
+.btn-validate {
+  background: #EAF3DE;
+  color: #3B6D11;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 6px;
+  transition: background 0.2s;
+}
+
+.btn-validate:hover {
+  background: #d4e8c2;
+}
+
+.btn-delete {
+  background: #FCEBEB;
+  color: #A32D2D;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
   cursor: pointer;
   transition: background 0.2s;
 }
 
-.btn-manage:hover {
-  background-color: #3f37a0;
+.btn-delete:hover {
+  background: #f5d0d0;
 }

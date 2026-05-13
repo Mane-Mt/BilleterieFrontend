@@ -1,0 +1,33 @@
+<div class="artist-details-container">
+  @if (artist) {
+    <div class="artist-card">
+      <div class="artist-card__header">
+        <div class="artist-card__avatar">
+          {{ artist.firstname.charAt(0) }}{{ artist.lastname.charAt(0) }}
+        </div>
+        <div>
+          <h2>{{ artist.firstname }} {{ artist.lastname }}</h2>
+          <span class="artist-card__id">ID : {{ artist.id }}</span>
+        </div>
+      </div>
+
+      <div class="artist-card__info">
+        <div class="info-item">
+          <span class="info-label">Email</span>
+          <span class="info-value">{{ artist.email }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Téléphone</span>
+          <span class="info-value">{{ artist.phone || 'Non renseigné' }}</span>
+        </div>
+      </div>
+
+      <div class="artist-card__actions">
+        <button class="btn-edit" (click)="goEdit()">Modifier</button>
+        <button class="btn-back" (click)="goBack()">Retour</button>
+      </div>
+    </div>
+  } @else {
+    <p>Chargement...</p>
+  }
+</div>

@@ -20,7 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ConcertCard } from './shared/concert-card/concert-card';
 import { MatCardModule } from '@angular/material/card';
 import { Navbar } from './shared/navbar/navbar';
-import { MatProgressSpinnerModule, MatSpinner } from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -40,6 +40,9 @@ import { OrganizerList } from './pages/organizers/organizer-list/organizer-list'
 import { OrganizerDetails } from './pages/organizers/organizer-details/organizer-details';
 import { OrganizerForm } from './pages/organizers/organizer-form/organizer-form';
 import { PurchaseConfirmDialog } from './shared/purchase-confirm-dialog/purchase-confirm-dialog';
+import { ArtistList } from './pages/artists/artist-list/artist-list';
+import { ArtistDetails } from './pages/artists/artist-details/artist-details';
+import { ArtistForm } from './pages/artists/artist-form/artist-form';
 
 const MATERIAL = [
   MatButtonModule,
@@ -81,6 +84,9 @@ const MATERIAL = [
     OrganizerDetails,
     OrganizerForm,
     PurchaseConfirmDialog,
+    ArtistList,
+    ArtistDetails,
+    ArtistForm,
   ],
   imports: [
     BrowserModule,
