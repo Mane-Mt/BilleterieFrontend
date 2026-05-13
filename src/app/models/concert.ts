@@ -1,29 +1,18 @@
 export class Concert {
   id?: number;
-  name: string;
-  description: string;
-  location: string;
-  musicalGenre: string;
-  placeNumber: number;
-  availableTickets : number;
-  popularity: number;
-  price: number;
-  date: string;
-  organizerId: string;
-  isValidated?: boolean; 
 
   constructor(
-    name: string,
-    description: string,
-    location: string,
-    musicalGenre: string,
-    placeNumber: number,
-    popularity: number,
-    price: number,
-    date: string,
-    organizerId: string,
-    availableTickets : number,
-    isValidated?: boolean  
+    public name: string = '',
+    public description: string = '',
+    public location: string = '',
+    public musicalGenre: string = '',
+    public placeNumber: number = 0,
+    public availableTickets: number = 0,
+    public popularity: number = 0,
+    public price: number = 0,
+    public date: string = '',
+    public organizerId: string = '',
+    public isValidated: boolean = false
   ) {
     this.name = name;
     this.description = description;

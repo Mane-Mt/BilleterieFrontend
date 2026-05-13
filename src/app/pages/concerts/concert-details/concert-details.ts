@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Concert } from '../../../models/concert';
 import { ConcertService } from '../../../services/concert-service';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-concert-details',
@@ -10,12 +11,14 @@ import { ConcertService } from '../../../services/concert-service';
   styleUrl: './concert-details.css',
 })
 export class ConcertDetails {
-  concert?: Concert;
-  
-  readonly quantity = signal(1);
+    protected readonly concert = signal<Concert>(new Concert());
+
+    readonly quantity = signal(1);
     readonly isLoading = signal(true);
     readonly isBuying = signal(false);
-  private readonly concertService = inject(ConcertService)
+    emailControl = new FormControl('', [Validators.required, Validators.email]);
+
+    private readonly concertService = inject(ConcertService)
     private route = inject(ActivatedRoute)
 
   ngOnInit(): void {
@@ -23,22 +26,22 @@ export class ConcertDetails {
     console.log(id);
     this.concertService.getConcertById(id).subscribe(c => {
         console.log(c);
-      this.concert = c;
+      this.concert.set(c);
       this.isLoading.set(false);
       console.log(this.isLoading())
     });
   }
  
   get totalPrice(): number {
-    return this.concert ? this.concert.price * this.quantity() : 0;
+    return this.concert ? this.concert().price * this.quantity() : 0;
   }
  
   get occupancyPercent(): number {
     if (!this.concert) return 0;
-    return Math.round(((this.concert.price - this.concert.price) / 1) * 100);
+    return Math.round(((this.concert().availableTickets - this.concert().placeNumber) / 1) * 100);
   }
  
-  increment(): void { if (this.concert && this.quantity() < Math.min(8, this.concert.availableTickets)) this.quantity.update(q => q + 1);; }
+  increment(): void { if (this.concert && this.quantity() < Math.min(8, this.concert().availableTickets)) this.quantity.update(q => q + 1);; }
   decrement(): void { if (this.quantity() > 1) this.quantity.update(q => q - 1); }
  
   buy(): void {

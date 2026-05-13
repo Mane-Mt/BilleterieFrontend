@@ -5,7 +5,7 @@ import { App } from './app';
 import { MyComponent } from './my-component/my-component';
 import { Artiste } from './artiste/artiste';
 import { ComponentForm } from './my-component/component-form/component-form';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterPokemonPipePipe } from './filter-pokemon--pipe-pipe';
 import { provideHttpClient } from '@angular/common/http';
 import { ConcertList } from './pages/concerts/concert-list/concert-list';
@@ -74,6 +74,7 @@ const MATERIAL = [
     AppRoutingModule,
     FormsModule,
     RouterModule,
+    ReactiveFormsModule,
    ...MATERIAL
   ],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],

@@ -2,6 +2,7 @@ import { Component, signal, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ConcertService } from '../../../services/concert-service';
+import { isValidDate } from 'rxjs/internal/util/isDate';
 
 @Component({
   selector: 'app-concert-form',
@@ -48,7 +49,8 @@ export class ConcertForm {
       popularity: this.popularity(),
       price: this.price(),
       date: this.date(),
-      organizerId: this.organizerId()
+      organizerId: this.organizerId(),
+      isValidated: false
     };
 
     this.concertsApiService.createConcert(concert).subscribe({
