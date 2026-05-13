@@ -1,35 +1,78 @@
 <div class="dashboard-container">
-  <h2>Tableau de bord</h2>
+  <h2>🎛️ Administration</h2>
 
+  <!-- Cards de navigation -->
   <div class="stats-grid">
-    <div class="stat-card">
+    <div class="stat-card" routerLink="/admin/concerts">
       <span class="stat-icon">🎵</span>
-      <span class="stat-value">{{ totalConcerts() }}</span>
+      <span class="stat-value">{{ loading() ? '...' : totalConcerts() }}</span>
       <span class="stat-label">Concerts</span>
     </div>
 
-    <div class="stat-card">
+    <div class="stat-card" routerLink="/users">
       <span class="stat-icon">👤</span>
-      <span class="stat-value">{{ totalUsers() }}</span>
+      <span class="stat-value">{{ loading() ? '...' : totalUsers() }}</span>
       <span class="stat-label">Utilisateurs</span>
     </div>
 
-    <div class="stat-card">
-      <span class="stat-icon">🎪</span>
-      <span class="stat-value">{{ totalOrganizers() }}</span>
-      <span class="stat-label">Organisateurs</span>
+    <div class="stat-card" routerLink="/artists">
+      <span class="stat-icon">🎤</span>
+      <span class="stat-value">{{ loading() ? '...' : totalArtists() }}</span>
+      <span class="stat-label">Artistes</span>
     </div>
 
-    <div class="stat-card">
-      <span class="stat-icon">🎟️</span>
-      <span class="stat-value">{{ totalTickets() }}</span>
-      <span class="stat-label">Tickets</span>
+    <div class="stat-card" routerLink="/organizers">
+      <span class="stat-icon">🎪</span>
+      <span class="stat-value">{{ loading() ? '...' : totalOrganizers() }}</span>
+      <span class="stat-label">Organisateurs</span>
     </div>
   </div>
 
-  <div class="dashboard-actions">
-    <button class="btn-manage" (click)="goToConcerts()">
-      Gérer les concerts
-    </button>
+  <!-- Liste des concerts récents -->
+  <div class="recent-section">
+    <h3>Concerts récents</h3>
+    @if (loading()) {
+      <p>Chargement des concerts...</p>
+    } @else {
+      <table>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Genre</th>
+            <th>Lieu</th>
+            <th>Prix</th>
+            <th>Statut</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (concert of recentConcerts(); track concert.name) {
+            <tr>
+              <td>{{ concert.name }}</td>
+              <td>{{ concert.musicalGenre }}</td>
+              <td>{{ concert.location }}</td>
+              <td>{{ concert.price }} €</td>
+              <td>
+                @if (concert.isValidated) {
+                  <span class="badge badge-ok">✅ Validé</span>
+                } @else {
+                  <span class="badge badge-warn">⏳ À valider</span>
+                }
+              </td>
+              <td>
+                @if (!concert.isValidated) {
+                  <button class="btn-validate" (click)="validateConcert(concert.id!)">
+                    Valider
+                  </button>
+                }
+                <button class="btn-delete" (click)="deleteConcert(concert.id!)">
+                  Supprimer
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
   </div>
 </div>

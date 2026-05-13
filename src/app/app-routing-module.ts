@@ -13,6 +13,9 @@ import { OrganizerForm } from './pages/organizers/organizer-form/organizer-form'
 import { AdminDashboard } from './pages/admin/admin-dashboard/admin-dashboard';
 import { AdminConcerts } from './pages/admin/admin-concerts/admin-concerts';
 import { OrganizerDetails } from './pages/organizers/organizer-details/organizer-details';
+import { ArtistList } from './pages/artists/artist-list/artist-list';
+import { ArtistForm } from './pages/artists/artist-form/artist-form';
+import { ArtistDetails } from './pages/artists/artist-details/artist-details';
 
 const routes: Routes = [
   { path: '', component: Home },
@@ -61,6 +64,19 @@ const routes: Routes = [
     { path: 'create', component: OrganizerForm },
     { path: ':id', component: OrganizerDetails },
     { path: ':id/edit', component: OrganizerForm }
+  ]
+},
+{
+  path: 'artists', children: [
+    { path: '', component: ArtistList },
+  ]
+},
+{
+  path: 'artists', children: [
+    { path: '', component: ArtistList },
+    { path: 'create', component: ArtistForm },
+    { path: ':id', component: ArtistDetails },
+    { path: ':id/edit', component: ArtistForm }
   ]
 },
 ];

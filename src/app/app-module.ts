@@ -20,7 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ConcertCard } from './shared/concert-card/concert-card';
 import { MatCardModule } from '@angular/material/card';
 import { Navbar } from './shared/navbar/navbar';
-import { MatProgressSpinnerModule, MatSpinner } from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -39,12 +39,27 @@ import { AdminConcerts } from './pages/admin/admin-concerts/admin-concerts';
 import { OrganizerList } from './pages/organizers/organizer-list/organizer-list';
 import { OrganizerDetails } from './pages/organizers/organizer-details/organizer-details';
 import { OrganizerForm } from './pages/organizers/organizer-form/organizer-form';
+import { ArtistList } from './pages/artists/artist-list/artist-list';
+import { ArtistDetails } from './pages/artists/artist-details/artist-details';
+import { ArtistForm } from './pages/artists/artist-form/artist-form';
+
 
 const MATERIAL = [
-  MatButtonModule, MatCardModule, MatChipsModule, MatDialogModule,
-  MatFormFieldModule, MatIconModule, MatInputModule, MatProgressBarModule,
-  MatProgressSpinnerModule, MatSelectModule, MatSliderModule,
-  MatSnackBarModule, MatTableModule, MatTabsModule, MatTooltipModule,
+  MatButtonModule,
+  MatCardModule,
+  MatChipsModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatSelectModule,
+  MatSliderModule,
+  MatSnackBarModule,
+  MatTableModule,
+  MatTabsModule,
+  MatTooltipModule,
 ];
 @NgModule({
   declarations: [
@@ -68,14 +83,11 @@ const MATERIAL = [
     OrganizerList,
     OrganizerDetails,
     OrganizerForm,
+    ArtistList,
+    ArtistDetails,
+    ArtistForm,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    RouterModule,
-   ...MATERIAL
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, RouterModule, ...MATERIAL],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],
 })

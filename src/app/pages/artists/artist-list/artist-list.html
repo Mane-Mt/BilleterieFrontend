@@ -1,0 +1,34 @@
+<div class="artist-list-container">
+  <h2>Liste des artistes</h2>
+
+  <button class="btn-create" routerLink="/artists/create">+ Créer un artiste</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Téléphone</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (artist of artists(); track artist.id) {
+        <tr>
+          <td>{{ artist.id }}</td>
+          <td>{{ artist.firstname }}</td>
+          <td>{{ artist.lastname }}</td>
+          <td>{{ artist.email }}</td>
+          <td>{{ artist.phone }}</td>
+          <td>
+            <a class="btn-voir" routerLink="/artists/{{ artist.id }}">Voir</a>
+            <a class="btn-modifier" routerLink="/artists/{{ artist.id }}/edit">Modifier</a>
+            <button class="btn-supprimer" (click)="deleteArtist(artist.id!)">Supprimer</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

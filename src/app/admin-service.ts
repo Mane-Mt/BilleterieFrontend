@@ -3,6 +3,14 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Concert } from './models/concert';
 
+export interface AdminStats {
+  totalConcerts: number;
+  totalUsers: number;
+  totalArtists: number;
+  totalOrganizers: number;
+  totalTickets: number;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -10,7 +18,10 @@ export class AdminService {
   private readonly http = inject(HttpClient);
   private readonly baseApiUrl = '/api';
 
-  // Concerts
+  getStats(): Observable<AdminStats> {
+    return this.http.get<AdminStats>(`${this.baseApiUrl}/admin/stats`);
+  }
+
   getConcerts(): Observable<Concert[]> {
     return this.http.get<Concert[]>(`${this.baseApiUrl}/concerts`);
   }
@@ -23,7 +34,6 @@ export class AdminService {
     return this.http.delete<void>(`${this.baseApiUrl}/concerts/${id}`);
   }
 
-  // Stats
   getUsers(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseApiUrl}/users/`);
   }
@@ -34,5 +44,9 @@ export class AdminService {
 
   getTickets(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseApiUrl}/tickets/`);
+  }
+
+  getArtists(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseApiUrl}/artists/`);
   }
 }
