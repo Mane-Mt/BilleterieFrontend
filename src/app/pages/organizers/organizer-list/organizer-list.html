@@ -17,12 +17,12 @@
     <tbody>
       @for (organizer of organizers(); track organizer.id) {
         <tr>
-          <td>{{ organizer.id }}</td>
-          <td>{{ organizer.firstname }}</td>
-          <td>{{ organizer.lastname }}</td>
-          <td>{{ organizer.email }}</td>
-          <td>{{ organizer.phone }}</td>
-          <td>
+          <td data-label="ID">{{ organizer.id }}</td>
+          <td data-label="Prénom">{{ organizer.firstname }}</td>
+          <td data-label="Nom">{{ organizer.lastname }}</td>
+          <td data-label="Email">{{ organizer.email }}</td>
+          <td data-label="Téléphone">{{ organizer.phone }}</td>
+          <td data-label="Actions">
             <a class="btn-voir" routerLink="/organizers/{{ organizer.id }}">Voir</a>
             <a class="btn-modifier" routerLink="/organizers/{{ organizer.id }}/edit">Modifier</a>
             <button class="btn-supprimer" (click)="deleteOrganizer(organizer.id!)">Supprimer</button>

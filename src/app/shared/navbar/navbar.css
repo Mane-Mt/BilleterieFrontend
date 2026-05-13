@@ -101,3 +101,51 @@
   color: #444;
   font-weight: 500;
 }
+
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 16px;
+    flex-wrap: wrap;
+    height: auto;
+    padding: 12px 16px;
+    gap: 12px;
+  }
+
+  .navbar__brand {
+    margin-right: 0;
+  }
+
+  .navbar__links {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    gap: 0;
+    padding-bottom: 4px;
+  }
+
+  .navbar__links a {
+    font-size: 12px;
+    padding: 6px 8px;
+    white-space: nowrap;
+  }
+
+  .navbar__links a mat-icon {
+    display: none;
+  }
+
+  .navbar__user {
+    margin-left: auto;
+  }
+
+  .navbar__username {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar__title {
+    display: none;
+  }
+}
