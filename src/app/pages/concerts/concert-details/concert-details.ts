@@ -1,8 +1,12 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, Inject, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Concert } from '../../../models/concert';
 import { ConcertService } from '../../../services/concert-service';
 import { FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { TicketCreate } from '../../../models/ticket';
+import { TicketService } from '../../../services/ticket-service';
+import { PurchaseConfirmDialog } from '../../../shared/purchase-confirm-dialog/purchase-confirm-dialog';
 
 @Component({
   selector: 'app-concert-details',
@@ -19,8 +23,10 @@ export class ConcertDetails {
     emailControl = new FormControl('', [Validators.required, Validators.email]);
 
     private readonly concertService = inject(ConcertService)
+    private readonly ticketService = inject(TicketService)
     private route = inject(ActivatedRoute)
-
+    private router =  inject(Router)
+    private readonly matDialog = inject(MatDialog)
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     console.log(id);
@@ -38,19 +44,41 @@ export class ConcertDetails {
  
   get occupancyPercent(): number {
     if (!this.concert) return 0;
-    return Math.round(((this.concert().availableTickets - this.concert().placeNumber) / 1) * 100);
+    return Math.round(((this.concert().placeNumber - this.concert().availableTickets) / this.concert().placeNumber) * 100);
   }
  
   increment(): void { if (this.concert && this.quantity() < Math.min(8, this.concert().availableTickets)) this.quantity.update(q => q + 1);; }
   decrement(): void { if (this.quantity() > 1) this.quantity.update(q => q - 1); }
  
   buy(): void {
-    if (!this.concert) return;
+    this.emailControl.markAsTouched();
+    if (!this.concert || this.emailControl.invalid) return;
+    
+    console.log(this.concert().id)
+    console.log(this.quantity())
+    console.log(this.emailControl.value!)
+    
+  
     this.isBuying.set(true);
-    // this.concertService.buyTicket(this.concert.id, this.quantity()).subscribe(() => {
-    //   this.isBuying = false;
-    //   this.snackBar.open(`✅ ${this.quantity()} ticket(s) acheté(s) !`, 'Voir mes tickets', { duration: 4000 })
-    //     .onAction().subscribe(() => this.router.navigate(['/tickets']));
-    // });
+    const newTicket =  new TicketCreate(this.concert().id ,this.quantity() , this.emailControl.value!)
+ 
+    this.ticketService
+      .buyTicket(newTicket)
+      .subscribe(ticket => { 
+        console.log(ticket);
+        this.concert.set(ticket.concert)
+        const ref = this.matDialog.open(PurchaseConfirmDialog, {
+          data: { ticket, email: this.emailControl.value },
+          width: '480px',
+          disableClose: true,
+          panelClass: 'stagely-dialog'
+        });
+        ref.afterClosed().subscribe((result: string) => {
+          if (result === 'tickets') {
+            this.router.navigate(['/tickets']);
+          }
+             this.router.navigate(['']);
+        });
+      });
   }
 }

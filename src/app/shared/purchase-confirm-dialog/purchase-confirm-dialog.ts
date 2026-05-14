@@ -20,5 +20,5 @@ export class PurchaseConfirmDialog {
   ) {}
  
   goToTickets(): void { this.dialogRef.close('tickets'); }
-  close(): void        { this.dialogRef.close('home'); }
+  close(): void { this.dialogRef.close(''); }
 }

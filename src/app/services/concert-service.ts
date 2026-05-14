@@ -1,15 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Concert } from '../models/concert';
+import { Concert, ConcertCreate } from '../models/concert';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ConcertService {
-  buyTicket(id: any, quantity: number) {
-    throw new Error('Method not implemented.');
-  }
+
   
   private readonly http = inject(HttpClient)
   private readonly baseApiUrl = 'http://localhost:4200/api'
@@ -22,7 +20,7 @@ export class ConcertService {
     return this.http.get<Concert[]>(`${this.baseApiUrl}/concerts`);
   }
 
-  createConcert(concert:Concert): Observable<void> {
+  createConcert(concert:ConcertCreate): Observable<void> {
     return this.http.post<void>(`${this.baseApiUrl}/concerts`, concert);
   }
 

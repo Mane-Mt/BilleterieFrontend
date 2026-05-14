@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ConcertService } from '../../../services/concert-service';
 import { isValidDate } from 'rxjs/internal/util/isDate';
+import { Artist } from '../../../artist-service';
+import { Concert, ConcertCreate } from '../../../models/concert';
 
 @Component({
   selector: 'app-concert-form',
@@ -24,13 +26,14 @@ export class ConcertForm {
   readonly popularity = signal<number>(0);
   readonly price = signal<number>(0);
   readonly date = signal<string>('');
-  readonly organizerId = signal<string>('');
+  readonly organizerId = signal<number>(0);
+  readonly artistIds = signal<number[]>([])
 
   // Validation calculée
   readonly ready = computed(() => 
     this.name().length > 0 && 
     this.location().length > 0 && 
-    this.organizerId().length > 0 &&
+    this.organizerId()> 0 &&
     this.placeNumber() > 0
   );
 
@@ -39,22 +42,23 @@ export class ConcertForm {
       return;
     }
 
-    const concert = {
-      image : this.image(),
-      name: this.name(),
-      description: this.description(),
-      location: this.location(),
-      musicalGenre: this.musicalGenre(),
-      placeNumber: this.placeNumber(),
-      availableTickets: this.placeNumber(),
-      popularity: this.popularity(),
-      price: this.price(),
-      date: this.date(),
-      organizerId: this.organizerId(),
-      isValidated: false
-    };
-
-    this.concertsApiService.createConcert(concert).subscribe({
+    const newConcert = new ConcertCreate(
+    this.image() || '🎤',
+    this.name(),
+    this.description(),
+    this.location(),
+    this.musicalGenre(),
+    this.placeNumber(),
+    this.placeNumber(), // availableTickets initialement égal à placeNumber
+    this.popularity(),
+    this.price(),
+    this.date(),
+    this.organizerId(),
+    false, // isValidated
+    this.artistIds()
+  );
+    
+    this.concertsApiService.createConcert(newConcert).subscribe({
       next: () => this.router.navigate(['/concerts']),
       error: (err) => {
         console.error('Error creating concert', err);

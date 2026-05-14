@@ -43,7 +43,10 @@ import { PurchaseConfirmDialog } from './shared/purchase-confirm-dialog/purchase
 import { ArtistList } from './pages/artists/artist-list/artist-list';
 import { ArtistDetails } from './pages/artists/artist-details/artist-details';
 import { ArtistForm } from './pages/artists/artist-form/artist-form';
-
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import { LOCALE_ID } from '@angular/core';
+registerLocaleData(localeFr);
 const MATERIAL = [
   MatButtonModule,
   MatCardModule,
@@ -96,7 +99,11 @@ const MATERIAL = [
     ReactiveFormsModule,
     ...MATERIAL,
   ],
-  providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
+  providers: [
+    provideBrowserGlobalErrorListeners(), 
+    provideHttpClient(),
+    { provide: LOCALE_ID, useValue: 'fr-FR' }
+  ],
   bootstrap: [App],
 })
 export class AppModule {

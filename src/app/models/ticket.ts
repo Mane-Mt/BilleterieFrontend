@@ -13,3 +13,15 @@ export interface Ticket {
   buyerEmail?: string;
 
 }
+
+export class TicketCreate{
+    public constructor(
+       public concertId:number,
+       public quantity:number,
+       public buyerEmail: string,
+    ){
+        this.concertId = concertId;
+        this.quantity = quantity;
+        this.buyerEmail = buyerEmail;
+    }
+}
