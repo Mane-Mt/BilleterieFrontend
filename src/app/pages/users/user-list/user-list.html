@@ -1,4 +1,3 @@
-
 <div class="user-list-container">
   <h2>Liste des utilisateurs</h2>
   
@@ -18,12 +17,12 @@
     <tbody>
       @for (user of users(); track user.id) {
         <tr>
-          <td>{{ user.id }}</td>
-          <td>{{ user.firstname }}</td>
-          <td>{{ user.lastname }}</td>
-          <td>{{ user.email }}</td>
-          <td>{{ user.phone }}</td>
-          <td>
+          <td data-label="ID">{{ user.id }}</td>
+          <td data-label="Prénom">{{ user.firstname }}</td>
+          <td data-label="Nom">{{ user.lastname }}</td>
+          <td data-label="Email">{{ user.email }}</td>
+          <td data-label="Téléphone">{{ user.phone }}</td>
+          <td data-label="Actions">
             <a class="btn-voir" routerLink="/users/{{ user.id }}">Voir</a>
             <a class="btn-modifier" routerLink="/users/{{ user.id }}/edit">Modifier</a>
             <button class="btn-supprimer" (click)="deleteUser(user.id!)">Supprimer</button>

@@ -1,6 +1,6 @@
 import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ArtistService, Artist } from '../../../artist-service';
+import { ArtistService, Artist } from '../../../services/artist-service';
 
 @Component({
   selector: 'app-artist-form',
@@ -37,7 +37,26 @@ export class ArtistForm implements OnInit {
     }
   }
 
+  isValidEmail(): boolean {
+    const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+    return emailRegex.test(this.email);
+  }
+
+  isValidPhone(): boolean {
+    const phoneRegex = /^[0-9]{10}$/;
+    return phoneRegex.test(this.phone);
+  }
+
   submit(): void {
+    if (this.email && !this.isValidEmail()) {
+      alert('Email invalide !');
+      return;
+    }
+    if (this.phone && !this.isValidPhone()) {
+      alert('Téléphone invalide — 10 chiffres requis !');
+      return;
+    }
+
     const artist = new Artist();
     artist.firstname = this.firstname;
     artist.lastname = this.lastname;

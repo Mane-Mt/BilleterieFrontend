@@ -37,7 +37,26 @@ export class OrganizerForm implements OnInit {
     }
   }
 
+  isValidEmail(): boolean {
+    const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+    return emailRegex.test(this.email);
+  }
+
+  isValidPhone(): boolean {
+    const phoneRegex = /^[0-9]{10}$/;
+    return phoneRegex.test(this.phone);
+  }
+
   submit(): void {
+    if (this.email && !this.isValidEmail()) {
+      alert('Email invalide !');
+      return;
+    }
+    if (this.phone && !this.isValidPhone()) {
+      alert('Téléphone invalide — 10 chiffres requis !');
+      return;
+    }
+
     const organizer = new Organizer();
     organizer.firstname = this.firstname;
     organizer.lastname = this.lastname;

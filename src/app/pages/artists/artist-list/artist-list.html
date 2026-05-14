@@ -17,12 +17,12 @@
     <tbody>
       @for (artist of artists(); track artist.id) {
         <tr>
-          <td>{{ artist.id }}</td>
-          <td>{{ artist.firstname }}</td>
-          <td>{{ artist.lastname }}</td>
-          <td>{{ artist.email }}</td>
-          <td>{{ artist.phone }}</td>
-          <td>
+          <td data-label="ID">{{ artist.id }}</td>
+          <td data-label="Prénom">{{ artist.firstname }}</td>
+          <td data-label="Nom">{{ artist.lastname }}</td>
+          <td data-label="Email">{{ artist.email }}</td>
+          <td data-label="Téléphone">{{ artist.phone }}</td>
+          <td data-label="Actions">
             <a class="btn-voir" routerLink="/artists/{{ artist.id }}">Voir</a>
             <a class="btn-modifier" routerLink="/artists/{{ artist.id }}/edit">Modifier</a>
             <button class="btn-supprimer" (click)="deleteArtist(artist.id!)">Supprimer</button>

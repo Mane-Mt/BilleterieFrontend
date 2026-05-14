@@ -1,6 +1,6 @@
 import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ArtistService, Artist } from '../../../artist-service';
+import { ArtistService, Artist } from '../../../services/artist-service';
 
 @Component({
   selector: 'app-artist-details',
