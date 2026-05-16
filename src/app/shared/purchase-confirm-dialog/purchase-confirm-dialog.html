@@ -22,7 +22,7 @@
   <!-- Ticket preview -->
   <div class="ticket-preview">
     <div class="ticket-preview__top">
-      <span class="ticket-preview__emoji">{{ data.ticket.concert.image }}</span>
+      <span class="ticket-preview__emoji">{{ data.ticket.concert.image | concertImage }}</span>
       <div class="ticket-preview__info">
         <span class="ticket-preview__artist">{{ data.ticket.concert.artistNames }}</span>
         <span class="ticket-preview__meta">

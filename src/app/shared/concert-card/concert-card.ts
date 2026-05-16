@@ -11,14 +11,14 @@ export class ConcertCard {
   @Input() concert!: Concert;
  
   get availabilityLabel(): string {
-    if (this.concert.price === 0) return 'Complet';
-    if (this.concert.price < 50) return 'Limité';
+    if (this.concert.availableTickets === 0) return 'Complet';
+    if (this.concert.availableTickets < 50) return 'Limité';
     return 'Disponible';
   }
  
   get availabilityClass(): string {
-    if (this.concert.price === 0) return 'danger';
-    if (this.concert.price < 50) return 'warn';
+    if (this.concert.availableTickets === 0) return 'danger';
+    if (this.concert.availableTickets < 50) return 'warn';
     return 'ok';
   }
  

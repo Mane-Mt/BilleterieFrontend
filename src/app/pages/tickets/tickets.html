@@ -88,7 +88,7 @@
 
           <div class="ticket-card">
             <div class="ticket-card__top">
-                <div class="ticket-card__emoji">{{ ticket.concert.image || '🎤' }}</div>
+                <div class="ticket-card__emoji">{{ ticket.concert.image | concertImage }}</div>
                 <div class="ticket-card__info">
                 <h3 class="ticket-card__artist">{{ ticket.concert.artistNames }}</h3>
                 <p class="ticket-card__venue">

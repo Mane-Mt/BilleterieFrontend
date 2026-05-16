@@ -1,3 +1,4 @@
+/* ── Page ──────────────────────────────────────────────────────────────────── */
 .concerts-page {
   max-width: 900px;
   margin: 0 auto;
@@ -23,7 +24,7 @@
   color: #888;
 }
 
-/* Filters bar */
+/* ── Barre de filtres ───────────────────────────────────────────────────────── */
 .filters-bar {
   display: flex;
   gap: 14px;
@@ -40,16 +41,16 @@
   width: 180px;
 }
 
-/* Genre chips */
+/* ── Genre chips ────────────────────────────────────────────────────────────── */
 .genre-chips {
   display: flex;
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
-/* Price filter */
+/* ── Prix ───────────────────────────────────────────────────────────────────── */
 .price-filter {
   display: flex;
   align-items: center;
@@ -66,7 +67,7 @@
   width: 120px;
 }
 
-/* Clear button */
+/* ── Bouton reset ───────────────────────────────────────────────────────────── */
 .clear-btn {
   color: #888 !important;
   font-size: 13px !important;
@@ -79,14 +80,87 @@
   margin-right: 4px;
 }
 
-/* Loading */
+/* ── Filtre actif (chip genre) ──────────────────────────────────────────────── */
+.active-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.active-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #eeedfe;
+  color: #534ab7;
+  border-radius: 20px;
+  padding: 4px 6px 4px 12px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.active-filter-chip mat-icon:first-child {
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+}
+
+.active-filter-chip button {
+  width: 22px !important;
+  height: 22px !important;
+  line-height: 22px !important;
+  color: #534ab7 !important;
+}
+
+.active-filter-chip button mat-icon {
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+}
+
+/* ── Loading ────────────────────────────────────────────────────────────────── */
 .loading {
   display: flex;
   justify-content: center;
   padding: 60px 0;
 }
 
-/* Empty state */
+/* ── Erreur réseau ──────────────────────────────────────────────────────────── */
+.error-state {
+  text-align: center;
+  padding: 60px 0;
+}
+
+.error-state mat-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  color: #ccc;
+  margin-bottom: 16px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.error-state h3 {
+  font-size: 18px;
+  color: #1a1a2e;
+  margin: 0 0 8px;
+}
+
+.error-state p {
+  color: #888;
+  margin: 0 0 20px;
+}
+
+.error-state button {
+  background: #534ab7 !important;
+  color: #fff !important;
+  border-radius: 10px !important;
+}
+
+/* ── Empty state ────────────────────────────────────────────────────────────── */
 .empty-state {
   text-align: center;
   padding: 60px 0;
@@ -109,7 +183,13 @@
   margin: 0 0 20px;
 }
 
-/* List */
+.empty-state button {
+  background: #534ab7 !important;
+  color: #fff !important;
+  border-radius: 10px !important;
+}
+
+/* ── Liste ──────────────────────────────────────────────────────────────────── */
 .concerts-list {
   display: flex;
   flex-direction: column;
@@ -124,7 +204,6 @@
   border: 1px solid #eee;
   border-radius: 14px;
   padding: 14px 18px;
-  margin: 5px 0;
   cursor: pointer;
   transition: box-shadow 0.2s, border-color 0.2s;
 }
@@ -173,6 +252,10 @@
   height: 13px;
 }
 
+.concert-row__date {
+  color: #aaa;
+}
+
 .concert-row__genre {
   font-size: 12px;
   color: #534ab7;
@@ -203,7 +286,7 @@
   height: 20px;
 }
 
-/* Badges */
+/* ── Badges disponibilité ───────────────────────────────────────────────────── */
 .badge {
   font-size: 11px;
   font-weight: 500;
@@ -211,17 +294,18 @@
   border-radius: 6px;
 }
 
-.badge.ok {
-  background: #eaf3de;
-  color: #3b6d11;
-}
+.badge.ok     { background: #eaf3de; color: #3b6d11; }
+.badge.warn   { background: #faeeda; color: #854f0b; }
+.badge.danger { background: #fcebeb; color: #a32d2d; }
 
-.badge.warn {
-  background: #faeeda;
-  color: #854f0b;
-}
-
-.badge.danger {
-  background: #fcebeb;
-  color: #a32d2d;
+/* Bouton rechercher */
+.search-btn {
+  background: #534ab7 !important;
+  color: #fff !important;
+  border-radius: 10px !important;
+  height: 56px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }

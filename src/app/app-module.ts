@@ -48,6 +48,7 @@ import { LOCALE_ID } from '@angular/core';
 import { Tickets } from './pages/tickets/tickets';
 import { ConfirmActionDialogComponent } from './pages/tickets/confirm-action-dialog-component/confirm-action-dialog-component';
 import { TransferDialogComponent } from './pages/tickets/transfer-dialog-component/transfer-dialog-component';
+import { ConcertImagePipe } from "./pipes/concert-image-pipe";
 registerLocaleData(localeFr);
 const MATERIAL = [
   MatButtonModule,
@@ -102,7 +103,8 @@ const MATERIAL = [
     RouterModule,
     ReactiveFormsModule,
     ...MATERIAL,
-  ],
+    ConcertImagePipe
+],
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(),

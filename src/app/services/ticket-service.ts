@@ -22,7 +22,6 @@ export class TicketService {
        return this.http.get<Ticket[]>(`${this.baseApiUrl}/tickets`,{params: { email: currentEmail }});
     }
     transferTicket(id: number, toEmail: string) {
-        console.log(toEmail)
        return this.http.put<Ticket>(`${this.baseApiUrl}/tickets/${id}/transfer`, {newUserEmail:toEmail});
     }
     cancelTicket(id: number) {

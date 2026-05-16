@@ -1,3 +1,4 @@
+import { flatEmojiMap } from "../constants/concert-emoji.constants";
 import { User } from "./user";
 
 export class Concert {
@@ -59,6 +60,12 @@ export class Concert {
       return 'Artiste inconnu';
     }
     return this.artists.map(a => `${a.firstname} ${a.lastname}`).join(', ');
+  }
+
+  getImage(): string {
+    console.log(flatEmojiMap);
+    return flatEmojiMap[this.image.toLowerCase().trim()] || '🎤';
+
   }
 }
 
