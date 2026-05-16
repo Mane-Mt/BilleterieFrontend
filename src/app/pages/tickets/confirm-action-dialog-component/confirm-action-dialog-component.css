@@ -1,0 +1,155 @@
+.dialog-container {
+  padding: 28px;
+  max-width: 420px;
+  width: 100%;
+}
+
+.dialog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.dialog-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog-icon mat-icon {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+.dialog-icon--red { background: #fcebeb; }
+.dialog-icon--red mat-icon { color: #a32d2d; }
+
+.dialog-icon--amber { background: #faeeda; }
+.dialog-icon--amber mat-icon { color: #854f0b; }
+
+.dialog-close {
+  color: #aaa !important;
+  margin: -8px -8px 0 0;
+}
+
+.dialog-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin: 0 0 10px;
+}
+
+.dialog-subtitle {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+
+.ticket-recap {
+  background: #f8f8fb;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ticket-recap__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ticket-recap__label {
+  font-size: 12px;
+  color: #888;
+}
+
+.ticket-recap__value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.ticket-recap__value.mono {
+  font-family: monospace;
+  font-size: 12px;
+  color: #555;
+}
+
+.dialog-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 24px;
+}
+
+.dialog-warning mat-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.dialog-warning span {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.dialog-warning--red {
+  background: #fcebeb;
+}
+
+.dialog-warning--red mat-icon,
+.dialog-warning--red span {
+  color: #a32d2d;
+}
+
+.dialog-warning--amber {
+  background: #faeeda;
+}
+
+.dialog-warning--amber mat-icon,
+.dialog-warning--amber span {
+  color: #854f0b;
+}
+
+.dialog-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.btn-cancel {
+  border-radius: 10px !important;
+  color: #666 !important;
+  border-color: #ddd !important;
+}
+
+.btn-confirm {
+  color: #fff !important;
+  border-radius: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px;
+}
+
+.btn-confirm mat-icon {
+  font-size: 17px;
+  width: 17px;
+  height: 17px;
+}
+
+.btn-confirm--red { background: #a32d2d !important; }
+.btn-confirm--amber { background: #854f0b !important; }

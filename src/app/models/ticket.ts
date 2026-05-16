@@ -1,17 +1,15 @@
 import { Concert } from "./concert";
 
 export interface Ticket {
-    
   id: number;
-  concertId: number;
   concert: Concert;
   quantity: number;
   totalPrice: number;
   reference: string;
-  status: 'confirmed' | 'pending' | 'cancelled';
+  status: 'confirmed' | 'pending' | 'cancelled' | 'transferred'; // Ajout de transferred
+  buyerEmail: string; // Le destinataire actuel
+  transferorEmail?: string; // L'ancien propriétaire
   purchaseDate: string;
-  buyerEmail?: string;
-
 }
 
 export class TicketCreate{

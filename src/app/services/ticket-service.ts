@@ -8,10 +8,28 @@ import { Injectable } from '@angular/core';
 })
 
 export class TicketService {
-    private readonly http = inject(HttpClient)
+    
+   
     private readonly baseApiUrl = 'http://localhost:4200/api'
+
+    constructor(private readonly http: HttpClient) { }
+
     buyTicket(ticketCreate: TicketCreate) {
-        console.log(ticketCreate);
        return this.http.post<Ticket>(`${this.baseApiUrl}/tickets`, ticketCreate);
+    }
+
+    getTicketsByEmail(currentEmail: string) {
+       return this.http.get<Ticket[]>(`${this.baseApiUrl}/tickets`,{params: { email: currentEmail }});
+    }
+    transferTicket(id: number, toEmail: string) {
+        console.log(toEmail)
+       return this.http.put<Ticket>(`${this.baseApiUrl}/tickets/${id}/transfer`, {newUserEmail:toEmail});
+    }
+    cancelTicket(id: number) {
+      return this.http.put<Ticket>(`${this.baseApiUrl}/tickets/${id}/cancel`,{});
+    }
+
+    refundTicket(id: number) {
+      return this.http.put<Ticket>(`${this.baseApiUrl}/tickets/${id}/refund`,{});
     }
 }

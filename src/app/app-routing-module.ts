@@ -16,16 +16,20 @@ import { OrganizerDetails } from './pages/organizers/organizer-details/organizer
 import { ArtistList } from './pages/artists/artist-list/artist-list';
 import { ArtistForm } from './pages/artists/artist-form/artist-form';
 import { ArtistDetails } from './pages/artists/artist-details/artist-details';
+import { Tickets } from './pages/tickets/tickets';
 
 const routes: Routes = [
   { path: '', component: Home },
-  { path: 'artiste', component: Artiste },
   {
     path: 'concerts', children: [
       { path: '', component: ConcertList },
       { path: 'create', component: ConcertForm },
       { path: ':id', component: ConcertDetails }
     ]
+  },
+  {
+    path:'tickets',
+    component:Tickets
   },
   {
     path: 'users', children: [

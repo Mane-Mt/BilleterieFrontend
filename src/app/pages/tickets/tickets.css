@@ -1,0 +1,391 @@
+.tickets-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 32px 24px 60px;
+}
+
+/* ===== LOOKUP VIEW ===== */
+.lookup-header,
+.results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.lookup-header h1,
+.results-header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.tickets-page__cta {
+  background: #534ab7 !important;
+  color: #fff !important;
+  border-radius: 10px !important;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.lookup-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.lookup-card__icon {
+  width: 64px;
+  height: 64px;
+  background: #eeedfe;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.lookup-card__icon mat-icon {
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+  color: #534ab7;
+}
+
+.lookup-card__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 10px;
+}
+
+.lookup-card__subtitle {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0 0 28px;
+}
+
+.lookup-card__form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+}
+
+.lookup-card__field {
+  width: 100%;
+}
+
+.lookup-card__btn {
+  height: 46px;
+  background: #534ab7 !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.lookup-card__hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #aaa;
+  margin: 6px 0 0;
+}
+
+.lookup-card__hint mat-icon {
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+}
+
+.demo-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  font-size: 13px;
+  color: #888;
+  background: #f9f8ff;
+  border: 1px dashed #d0cdf5;
+  border-radius: 10px;
+  padding: 10px 16px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.demo-hint mat-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  color: #534ab7;
+}
+
+/* ===== RESULTS VIEW ===== */
+.results-email-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.email-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #eeedfe;
+  color: #3c3489;
+  border-radius: 20px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.email-chip mat-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+.change-email-btn {
+  color: #666 !important;
+  font-size: 13px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px;
+}
+
+.change-email-btn mat-icon {
+  font-size: 15px;
+  width: 15px;
+  height: 15px;
+}
+
+.results-count {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 60px 0;
+}
+
+.empty-state__emoji {
+  font-size: 52px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.empty-state h3 {
+  font-size: 18px;
+  color: #1a1a2e;
+  margin: 0 0 8px;
+}
+
+.empty-state p {
+  color: #888;
+  margin: 0 0 24px;
+  font-size: 14px;
+}
+
+/* Tickets list */
+.tickets-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Ticket card */
+.ticket-card {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #eee;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.ticket-card:hover {
+  box-shadow: 0 4px 20px rgba(83, 74, 183, 0.08);
+}
+
+.ticket-card__top {
+  display: flex;
+  gap: 16px;
+  padding: 18px 20px;
+  align-items: flex-start;
+}
+
+.ticket-card__emoji {
+  font-size: 30px;
+  width: 52px;
+  height: 52px;
+  background: #f5f3ff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ticket-card__info {
+  flex: 1;
+}
+
+.ticket-card__artist {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 4px;
+}
+
+.ticket-card__venue {
+  font-size: 13px;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin: 0 0 10px;
+}
+
+.ticket-card__venue mat-icon {
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+}
+
+.ticket-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ticket-card__qty   { font-size: 13px; color: #555; }
+.ticket-card__price { font-size: 15px; font-weight: 700; color: #534ab7; }
+
+.ticket-card__divider {
+  height: 0;
+  border-top: 1px dashed #e5e5e5;
+  margin: 0 20px;
+}
+
+.ticket-card__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: #fafafa;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ticket-card__ref {
+  font-family: monospace;
+  font-size: 12px;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ticket-card__ref mat-icon {
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+}
+
+.ticket-card__actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Status badge */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 8px;
+}
+
+.status-badge mat-icon {
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+}
+
+.status-badge.confirmed { background: #eaf3de; color: #3b6d11; } /* Vert */
+.status-badge.cancelled { background: #fcebeb; color: #a32d2d; } /* Rouge */
+.status-badge.transferred { background: #f3ebff; color: #6b21a8; } /* Violet pour transfert */
+
+/* Action buttons */
+.action-btn {
+  font-size: 12px !important;
+  border-radius: 8px !important;
+  height: 32px !important;
+  padding: 0 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px;
+}
+
+.action-btn mat-icon {
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+}
+
+.action-btn.danger {
+  color: #a32d2d !important;
+  border-color: #f5c5c5 !important;
+}
+
+/* Style pour l'affichage du transfert */
+.ticket-card__transfer-info {
+  margin-top: 8px;
+  padding: 6px 10px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #666;
+  border: 1px solid #eee;
+}
+
+.ticket-card__transfer-info mat-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  color: #6b21a8;
+}
+
+.email-highlight {
+  font-weight: 600;
+  color: #1a1a2e;
+}

@@ -10,7 +10,6 @@ import { FilterPokemonPipePipe } from './filter-pokemon--pipe-pipe';
 import { provideHttpClient } from '@angular/common/http';
 import { ConcertList } from './pages/concerts/concert-list/concert-list';
 import { ConcertForm } from './pages/concerts/concert-form/concert-form';
-import { Concerts } from './pages/concerts/concerts';
 import { UserList } from './pages/users/user-list/user-list';
 import { UserDetails } from './pages/users/user-details/user-details';
 import { UserForm } from './pages/users/user-form/user-form';
@@ -46,6 +45,9 @@ import { ArtistForm } from './pages/artists/artist-form/artist-form';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { LOCALE_ID } from '@angular/core';
+import { Tickets } from './pages/tickets/tickets';
+import { ConfirmActionDialogComponent } from './pages/tickets/confirm-action-dialog-component/confirm-action-dialog-component';
+import { TransferDialogComponent } from './pages/tickets/transfer-dialog-component/transfer-dialog-component';
 registerLocaleData(localeFr);
 const MATERIAL = [
   MatButtonModule,
@@ -74,7 +76,6 @@ const MATERIAL = [
     ConcertList,
     ConcertDetails,
     ConcertForm,
-    Concerts,
     UserList,
     UserDetails,
     UserForm,
@@ -90,6 +91,9 @@ const MATERIAL = [
     ArtistList,
     ArtistDetails,
     ArtistForm,
+    Tickets,
+    ConfirmActionDialogComponent,
+    TransferDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,9 +104,9 @@ const MATERIAL = [
     ...MATERIAL,
   ],
   providers: [
-    provideBrowserGlobalErrorListeners(), 
+    provideBrowserGlobalErrorListeners(),
     provideHttpClient(),
-    { provide: LOCALE_ID, useValue: 'fr-FR' }
+    { provide: LOCALE_ID, useValue: 'fr-FR' },
   ],
   bootstrap: [App],
 })

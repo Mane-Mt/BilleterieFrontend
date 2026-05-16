@@ -1,0 +1,72 @@
+<div class="dialog-container">
+
+  <div class="dialog-header">
+    <div class="dialog-icon" [class.dialog-icon--red]="isCancel" [class.dialog-icon--amber]="!isCancel">
+      <mat-icon>{{ isCancel ? 'cancel' : 'currency_exchange' }}</mat-icon>
+    </div>
+    <button mat-icon-button class="dialog-close" (click)="cancel()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <h2 class="dialog-title">
+    {{ isCancel ? 'Annuler ce ticket ?' : 'Demander un remboursement ?' }}
+  </h2>
+
+  @if (isCancel) {
+    <p class="dialog-subtitle">
+      Vous êtes sur le point d'annuler votre ticket pour <strong>{{ data.concertName }}</strong>.
+      Cette action est irréversible.
+    </p>
+  }
+
+  @if (isRefund) {
+    <p class="dialog-subtitle">
+      Vous demandez le remboursement de votre ticket pour <strong>{{ data.concertName }}</strong>.
+      Le remboursement sera traité sous 5 à 10 jours ouvrés.
+    </p>
+  }
+
+  <div class="ticket-recap">
+    <div class="ticket-recap__row">
+      <span class="ticket-recap__label">Référence</span>
+      <span class="ticket-recap__value mono">{{ data.ticketRef }}</span>
+    </div>
+    <div class="ticket-recap__row">
+      <span class="ticket-recap__label">Montant</span>
+      <span class="ticket-recap__value">{{ data.amount | number:'1.2-2' }} €</span>
+    </div>
+  </div>
+
+  <div class="dialog-warning" [class.dialog-warning--red]="isCancel" [class.dialog-warning--amber]="!isCancel">
+    <mat-icon>{{ isCancel ? 'warning' : 'info_outline' }}</mat-icon>
+    
+    @if (isCancel) {
+      <span>
+        Le ticket sera définitivement supprimé. Aucun remboursement ne sera effectué.
+      </span>
+    }
+
+    @if (isRefund) {
+      <span>
+        Une fois la demande soumise, le ticket ne sera plus utilisable, même si le remboursement est en cours.
+      </span>
+    }
+  </div>
+
+  <div class="dialog-actions">
+    <button mat-stroked-button class="btn-cancel" (click)="cancel()">
+      Retour
+    </button>
+    <button
+      mat-flat-button
+      class="btn-confirm"
+      [class.btn-confirm--red]="isCancel"
+      [class.btn-confirm--amber]="!isCancel"
+      (click)="confirm()">
+      <mat-icon>{{ isCancel ? 'delete_forever' : 'currency_exchange' }}</mat-icon>
+      {{ isCancel ? 'Oui, annuler' : 'Confirmer le remboursement' }}
+    </button>
+  </div>
+
+</div>

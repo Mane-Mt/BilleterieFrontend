@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ConcertService } from '../../../services/concert-service';
 import { isValidDate } from 'rxjs/internal/util/isDate';
-import { Artist } from '../../../artist-service';
 import { Concert, ConcertCreate } from '../../../models/concert';
 
 @Component({
@@ -26,6 +25,8 @@ export class ConcertForm {
   readonly popularity = signal<number>(0);
   readonly price = signal<number>(0);
   readonly date = signal<string>('');
+  readonly startTime = signal<string>('');
+  readonly endTime = signal<string>('');
   readonly organizerId = signal<number>(0);
   readonly artistIds = signal<number[]>([])
 
@@ -53,6 +54,8 @@ export class ConcertForm {
     this.popularity(),
     this.price(),
     this.date(),
+    this.startTime(),
+    this.endTime(),
     this.organizerId(),
     false, // isValidated
     this.artistIds()

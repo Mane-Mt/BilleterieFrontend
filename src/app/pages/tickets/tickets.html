@@ -1,0 +1,159 @@
+<div class="tickets-page">
+
+  @if (view() === 'lookup') {
+    <div class="lookup-view">
+      <div class="lookup-card">
+        <div class="lookup-card__icon">
+          <mat-icon>confirmation_number</mat-icon>
+        </div>
+        <h2 class="lookup-card__title">Retrouvez vos tickets</h2>
+        <p class="lookup-card__subtitle">
+          Saisissez l'email utilisé lors de votre achat pour accéder à vos billets.
+          Aucun compte requis.
+        </p>
+
+        <div class="lookup-card__form">
+          <mat-form-field appearance="outline" class="lookup-card__field">
+            <mat-label>Adresse email</mat-label>
+            <mat-icon matPrefix>mail_outline</mat-icon>
+            <input
+              matInput
+              type="email"
+              placeholder="exemple@email.com"
+              [formControl]="emailControl"
+              (keyup.enter)="searchTickets()" />
+            
+            @if (emailControl.hasError('required')) {
+              <mat-error>L'email est requis</mat-error>
+            }
+            @if (emailControl.hasError('email')) {
+              <mat-error>Format d'email invalide</mat-error>
+            }
+          </mat-form-field>
+
+          <button
+            mat-flat-button
+            class="lookup-card__btn"
+            (click)="searchTickets()"
+            [disabled]="isSearching()">
+            
+            @if (isSearching()) {
+              <mat-spinner diameter="18"></mat-spinner>
+            } @else {
+              <mat-icon>search</mat-icon>
+            }
+            {{ isSearching() ? 'Recherche...' : 'Afficher mes tickets' }}
+          </button>
+
+          <p class="lookup-card__hint">
+            <mat-icon>lock_outline</mat-icon>
+            Votre email est utilisé uniquement pour retrouver vos tickets.
+          </p>
+        </div>
+      </div>
+
+      <div class="demo-hint">
+        <mat-icon>lightbulb_outline</mat-icon>
+        <span>Pour la démo, utilisez <strong>jean.dupont@email.com</strong></span>
+      </div>
+    </div>
+  }
+
+  @if (view() === 'results') {
+    <div class="results-view">
+      <div class="results-header">
+        <h1>Mes tickets</h1>
+        <button mat-flat-button routerLink="/concerts" class="tickets-page__cta">
+          <mat-icon>add</mat-icon> Trouver un concert
+        </button>
+      </div>
+
+      <div class="results-email-bar">
+        <div class="email-chip">
+          <mat-icon>mail_outline</mat-icon>
+          {{ currentEmail() }}
+        </div>
+        <button mat-button class="change-email-btn" (click)="changeEmail()">
+          <mat-icon>edit</mat-icon> Changer d'email
+        </button>
+      </div>
+
+      @for (ticket of tickets(); track ticket.reference) {
+        <div class="tickets-list">
+          @if ($first) {
+            <div class="results-count">
+              <span>{{ tickets().length }} ticket{{ tickets().length > 1 ? 's' : '' }} trouvé{{ tickets().length > 1 ? 's' : '' }}</span>
+            </div>
+          }
+
+          <div class="ticket-card">
+            <div class="ticket-card__top">
+                <div class="ticket-card__emoji">{{ ticket.concert.image || '🎤' }}</div>
+                <div class="ticket-card__info">
+                <h3 class="ticket-card__artist">{{ ticket.concert.artistNames }}</h3>
+                <p class="ticket-card__venue">
+                    <mat-icon>location_on</mat-icon>
+                    {{ ticket.concert.location }} · {{ ticket.concert.date | date:'d MMM yyyy' }}
+                </p>
+
+                <div class="ticket-card__meta">
+                    <span class="ticket-card__qty">× {{ ticket.quantity }} place(s)</span>
+                    <span class="ticket-card__price">{{ ticket.totalPrice | number:'1.2-2' }} €</span>
+                    
+                    <span class="status-badge" [class]="ticket.status">
+                    @if (ticket.status === 'confirmed') { <mat-icon>check_circle</mat-icon> }
+                    @if (ticket.status === 'cancelled') { <mat-icon>cancel</mat-icon> }
+                    @if (ticket.status === 'transferred') { <mat-icon>swap_horiz</mat-icon> }
+                    {{ getStatusLabel(ticket.status) }}
+                    </span>
+                </div>
+
+                @if (ticket.transferorEmail) {
+                    <div class="ticket-card__transfer-info">
+                    <mat-icon>forward_to_inbox</mat-icon>
+                    <span>Recu de : <span class="email-highlight">{{ ticket.transferorEmail }}</span></span>
+                    </div>
+                }
+                
+                @if (ticket.status === 'transferred') {
+                    <div class="ticket-card__transfer-info">
+                    <mat-icon>outbound</mat-icon>
+                    <span>Transféré à : <span class="email-highlight">{{ ticket.buyerEmail }}</span></span>
+                    </div>
+                }
+                </div>
+            </div>
+
+            <div class="ticket-card__divider"></div>
+
+            <div class="ticket-card__bottom">
+                <span class="ticket-card__ref">
+                <mat-icon>qr_code</mat-icon>
+                {{ ticket.reference }}
+                </span>
+                
+                @if (ticket.status != 'cancelled') {
+                <div class="ticket-card__actions">
+                    <button mat-stroked-button class="action-btn" (click)="openTransfer(ticket)">
+                    <mat-icon>swap_horiz</mat-icon> Transférer
+                    </button>
+                    <button mat-stroked-button class="action-btn danger" (click)="openCancel(ticket)">
+                    <mat-icon>close</mat-icon> Annuler
+                    </button>
+                </div>
+                }
+            </div>
+            </div>
+        </div>
+      } @empty {
+        <div class="empty-state">
+          <span class="empty-state__emoji">🎫</span>
+          <h3>Aucun ticket trouvé</h3>
+          <p>Aucun ticket n'est associé à l'adresse <strong>{{ currentEmail() }}</strong>.</p>
+          <button mat-stroked-button (click)="changeEmail()">Essayer un autre email</button>
+        </div>
+      }
+    </div>
+  }
+
+</div>

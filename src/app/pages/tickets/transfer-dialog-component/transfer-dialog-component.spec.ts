@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Concerts } from './concerts';
+import { TransferDialogComponent } from './transfer-dialog-component';
 
-describe('Concerts', () => {
-  let component: Concerts;
-  let fixture: ComponentFixture<Concerts>;
+describe('TransferDialogComponent', () => {
+  let component: TransferDialogComponent;
+  let fixture: ComponentFixture<TransferDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [Concerts],
+      declarations: [TransferDialogComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Concerts);
+    fixture = TestBed.createComponent(TransferDialogComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

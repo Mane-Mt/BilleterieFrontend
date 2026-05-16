@@ -1,0 +1,50 @@
+<div class="dialog-container">
+
+  <div class="dialog-header">
+    <div class="dialog-icon dialog-icon--purple">
+      <mat-icon>swap_horiz</mat-icon>
+    </div>
+    <button mat-icon-button class="dialog-close" (click)="cancel()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <h2 class="dialog-title">Transférer le ticket</h2>
+  <p class="dialog-subtitle">
+    Indiquez l'adresse email de la personne à qui vous souhaitez transférer ce ticket. 
+    Elle pourra le récupérer depuis la page <strong>Mes tickets</strong>.
+  </p>
+
+  <mat-form-field appearance="outline" class="dialog-field">
+    <mat-label>Email du destinataire</mat-label>
+    <mat-icon matPrefix>mail_outline</mat-icon>
+    <input
+      matInput
+      type="email"
+      placeholder="destinataire@exemple.com"
+      [formControl]="emailControl"
+      (keyup.enter)="confirm()" />
+    
+    @if (emailControl.hasError('required')) {
+      <mat-error>L'email est requis</mat-error>
+    }
+    
+    @if (emailControl.hasError('email')) {
+      <mat-error>Format d'email invalide</mat-error>
+    }
+  </mat-form-field>
+
+  <div class="dialog-info">
+    <mat-icon>info_outline</mat-icon>
+    <span>Le transfert est définitif. Vous ne pourrez plus accéder à ce ticket une fois transféré.</span>
+  </div>
+
+  <div class="dialog-actions">
+    <button mat-stroked-button class="btn-cancel" (click)="cancel()">Annuler</button>
+    <button mat-flat-button class="btn-confirm" (click)="confirm()">
+      <mat-icon>send</mat-icon>
+      Transférer
+    </button>
+  </div>
+
+</div>
