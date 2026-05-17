@@ -1,5 +1,5 @@
 import { Component, OnInit, inject, signal, ChangeDetectorRef } from '@angular/core';
-import { AdminService } from '../../../admin-service';
+import { AdminService } from '../../../services/admin-service';
 import { Concert } from '../../../models/concert';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, OnInit, inject, signal, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { AdminService } from '../../../admin-service';
+import { AdminService } from '../../../services/admin-service';
 import { Concert } from '../../../models/concert';
 
 @Component({
@@ -37,10 +37,12 @@ export class AdminDashboard implements OnInit {
       this.totalArtists.set(stats.totalArtists);
       this.loading.set(false);
       this.cdr.detectChanges();
+      console.log(stats)
     });
 
     this.adminService.getConcerts().subscribe((concerts: Concert[]) => {
       this.recentConcerts.set(concerts);
+        this.loading.set(false);
       this.cdr.detectChanges();
     });
   }

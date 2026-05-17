@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Concert } from './models/concert';
+import { Concert } from '../models/concert';
 
 export interface AdminStats {
   totalConcerts: number;
@@ -16,10 +16,10 @@ export interface AdminStats {
 })
 export class AdminService {
   private readonly http = inject(HttpClient);
-  private readonly baseApiUrl = '/api';
+  private readonly baseApiUrl = 'http://localhost:4200/api';
 
   getStats(): Observable<AdminStats> {
-    return this.http.get<AdminStats>(`${this.baseApiUrl}/admin/stats`);
+    return this.http.get<AdminStats>(`${this.baseApiUrl}/stats`);
   }
 
   getConcerts(): Observable<Concert[]> {

@@ -1,49 +1,243 @@
-<div class="flex flex-col gap-y-4 p-6 max-w-2xl">
-  <h2 class="text-xl font-bold">Nouveau Concert</h2>
+<div class="create-page">
 
-  <label for="name">Nom du concert</label>
-  <input [(ngModel)]="name" id="name" type="text" class="rounded border border-slate-300 p-2">
-
-  <label for="description">Description</label>
-  <textarea [(ngModel)]="description" id="description" class="rounded border border-slate-300 p-2" rows="3"></textarea>
-
-  <div class="grid grid-cols-2 gap-4">
-    <div class="flex flex-col gap-y-2">
-      <label for="location">Lieu</label>
-      <input [(ngModel)]="location" id="location" type="text" class="rounded border border-slate-300 p-2">
-    </div>
-
-    <div class="flex flex-col gap-y-2">
-      <label for="musicalGenre">Genre Musical</label>
-      <input [(ngModel)]="musicalGenre" id="musicalGenre" type="text" class="rounded border border-slate-300 p-2">
-    </div>
+  <div class="page-header">
+    <button mat-icon-button routerLink="/admin/concerts" class="back-btn">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1>Créer un concert</h1>
   </div>
 
-  <div class="grid grid-cols-2 gap-4">
-    <div class="flex flex-col gap-y-2">
-      <label for="placeNumber">Nombre de places</label>
-      <input [(ngModel)]="placeNumber" id="placeNumber" type="number" class="rounded border border-slate-300 p-2">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="form-card">
+      <div class="form-section-label">
+        <mat-icon>festival</mat-icon>
+        L'Événement
+      </div>
+
+      <div class="form-body">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Nom du concert</mat-label>
+          <mat-icon matPrefix>music_note</mat-icon>
+          <input matInput formControlName="name" placeholder="Ex : Indochine – Tour 2026" />
+          @if (form.get('name')?.hasError('required')) {
+          <mat-error>Le nom est requis</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Description</mat-label>
+          <mat-icon matPrefix>notes</mat-icon>
+          <textarea matInput formControlName="description" rows="3"
+            placeholder="Décrivez l'événement, le programme, l'ambiance…"></textarea>
+        </mat-form-field>
+
+        <div class="field-row two">
+          <div class="emoji-row">
+            <div class="emoji-preview">{{ previewEmoji }}</div>
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Icône / ambiance visuelle</mat-label>
+              <mat-icon matPrefix>mood</mat-icon>
+              <mat-select formControlName="image">
+                <mat-option value="autre">🎵 Par défaut</mat-option>
+                @for (group of emojiGroups; track group.label) {
+                <mat-optgroup [label]="group.label">
+                  @for (opt of group.options; track opt.value) {
+                  <mat-option [value]="opt.value">
+                    {{ opt.emoji }} {{ opt.label }}
+                  </mat-option>
+                  }
+                </mat-optgroup>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <p class="field-label">Popularité <span class="req">*</span> <span class="field-hint">(1 à 5)</span></p>
+            <div class="popularity-row">
+              @for (star of popularityOptions; track star) {
+              <button type="button" class="pop-star" [class.active]="(form.get('popularity')?.value || 0) >= star"
+                (click)="setPopularity(star)" [attr.aria-label]="'Popularité ' + star + ' sur 5'">
+                <mat-icon>star</mat-icon>
+              </button>
+              }
+              <span class="pop-label">{{ form.get('popularity')?.value }} / 5</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="genre-section">
+          <p class="field-label">
+            Genre musical <span class="req">*</span>
+            @if (form.get('musicalGenre')?.touched && form.get('musicalGenre')?.hasError('required')) {
+            <span class="error-inline">— Requis</span>
+            }
+          </p>
+          <div class="genre-grid">
+            @for (genre of genres; track genre) {
+            <button type="button" class="genre-chip" [class.active]="form.get('musicalGenre')?.value === genre"
+              (click)="selectGenre(genre)">
+              {{ genre }}
+            </button>
+            }
+          </div>
+        </div>
+        <br>
+
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Lieu</mat-label>
+          <mat-icon matPrefix>stadium</mat-icon>
+          <input matInput formControlName="location" placeholder="Ex : Accor Arena, Paris" />
+          @if (form.get('location')?.hasError('required')) {
+          <mat-error>Le lieu est requis</mat-error>
+          }
+        </mat-form-field>
+
+        <div class="field-row two">
+          <mat-form-field appearance="outline">
+            <mat-label>Date</mat-label>
+            <mat-icon matPrefix>calendar_today</mat-icon>
+            <input matInput [matDatepicker]="picker" formControlName="date" placeholder="JJ/MM/AAAA" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            @if (form.get('date')?.hasError('required')) {
+            <mat-error>La date est requise</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Heure de début</mat-label>
+            <mat-icon matPrefix>access_time</mat-icon>
+            <input matInput formControlName="startTime" placeholder="Ex : 20h00" />
+            @if (form.get('startTime')?.hasError('required')) {
+            <mat-error>Requis</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="field-row two">
+          <mat-form-field appearance="outline">
+            <mat-label>Sélectionner les artistes</mat-label>
+            <mat-icon matPrefix>people</mat-icon>
+            <mat-select formControlName="artistIds" multiple [compareWith]="compareArtists">
+              <mat-select-trigger>
+                @if (selectedArtists.length === 0) {
+                <span class="select-placeholder">Aucun artiste sélectionné</span>
+                } @else {
+                <span>{{ selectedArtists.length }} artiste{{ selectedArtists.length > 1 ? 's' : '' }} sélectionné{{
+                  selectedArtists.length > 1 ? 's' : '' }}</span>
+                }
+              </mat-select-trigger>
+
+              @if (isLoadingArtists) {
+              <mat-option disabled>Chargement…</mat-option>
+              }
+
+              @for (artist of allArtists; track artist.id) {
+              <mat-option [value]="artist.id">
+                <div class="artist-option">
+                  <div class="artist-option__avatar">{{ artist.initials }}</div>
+                  <div class="artist-option__info">
+                    <span class="artist-option__name">{{ artist.firstname }}</span>
+                  </div>
+                </div>
+              </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Sélectionner l'organisateur</mat-label>
+            <mat-icon matPrefix>business</mat-icon>
+
+            <mat-select formControlName="organizerId">
+              @if (isLoadingOrganizers) {
+              <mat-option disabled>Chargement des organisateurs…</mat-option>
+              }
+
+              @for (organizer of allOrganizers; track organizer.id) {
+              <mat-option [value]="organizer.id">
+                {{ organizer.firstname }} {{ organizer.lastname }}
+              </mat-option>
+              }
+            </mat-select>
+
+            @if (form.get('organizerId')?.hasError('required')) {
+            <mat-error>L'organisateur est requis</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        @if (selectedArtists.length > 0) {
+        <div class="selected-chips">
+          @for (artist of selectedArtists; track artist.id) {
+          <span class="artist-chip">
+            <span class="artist-chip__avatar">{{ artist.initials }}</span>
+            {{ artist.fullName }}
+          </span>
+          }
+        </div>
+        }
+      </div>
     </div>
 
-    <div class="flex flex-col gap-y-2">
-      <label for="price">Prix (€)</label>
-      <input [(ngModel)]="price" id="price" type="number" class="rounded border border-slate-300 p-2">
+    <div class="form-card">
+      <div class="form-section-label">
+        <mat-icon>confirmation_number</mat-icon>
+        Billetterie &amp; Organisation
+      </div>
+
+      <div class="form-body">
+        <div class="field-row two">
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre de places</mat-label>
+            <mat-icon matPrefix>group</mat-icon>
+            <input matInput type="number" formControlName="placeNumber" placeholder="Ex : 8000" min="1" />
+            @if (form.get('placeNumber')?.hasError('required')) {
+            <mat-error>Requis</mat-error>
+            }
+            @if (form.get('placeNumber')?.hasError('min')) {
+            <mat-error>Minimum 1 place</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Prix par billet (€)</mat-label>
+            <mat-icon matPrefix>euro</mat-icon>
+            <input matInput type="number" formControlName="price" placeholder="Ex : 45" min="0" />
+            @if (form.get('price')?.hasError('required')) {
+            <mat-error>Requis</mat-error>
+            }
+            @if (form.get('price')?.hasError('min')) {
+            <mat-error>Le prix ne peut pas être négatif</mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <label for="popularity">Popularité (0 à 100)</label>
-  <div class="flex gap-x-4">
-    <input [(ngModel)]="popularity" id="popularity" type="range" min="0" max="100" class="flex-1">
-    <input [(ngModel)]="popularity" id="popularity_value" type="number" min="0" max="100" class="w-20 rounded border border-slate-300 p-2">
-  </div>
+    @if (errorMessage) {
+    <div class="error-block">
+      <mat-icon>error_outline</mat-icon>
+      {{ errorMessage }}
+    </div>
+    }
 
-  <label for="organizerId">ID Organisateur</label>
-  <input [(ngModel)]="organizerId" id="organizerId" type="text" class="rounded border border-slate-300 p-2">
+    <div class="form-actions">
+      <button mat-stroked-button type="button" (click)="cancel()" class="btn-cancel">
+        Annuler
+      </button>
 
-  <button 
-    (click)="onSubmit()" 
-    [disabled]="!ready()"
-    class="mt-4 bg-blue-600 text-white rounded p-2 font-bold disabled:bg-slate-300 disabled:cursor-not-allowed">
-    Créer le concert
-  </button>
+      <button mat-flat-button type="submit" class="btn-submit" [disabled]="isSubmitting">
+        @if (isSubmitting) {
+        <mat-spinner diameter="18"></mat-spinner>
+        } @else {
+        <mat-icon>check</mat-icon>
+        }
+        {{ isSubmitting ? 'Création…' : 'Créer le concert' }}
+      </button>
+    </div>
+
+  </form>
 </div>

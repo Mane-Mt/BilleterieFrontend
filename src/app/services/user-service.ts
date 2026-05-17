@@ -8,7 +8,7 @@ import { User } from './../models/user';
 })
 export class UserService {
   private readonly http = inject(HttpClient);
-  private readonly baseApiUrl = '/api';
+  private readonly baseApiUrl = 'http://localhost:4200/api';
 
 
   getUsers(): Observable<User[]> {

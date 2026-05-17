@@ -15,7 +15,7 @@ export class Organizer {
 })
 export class OrganizerService {
   private readonly http = inject(HttpClient);
-  private readonly baseApiUrl = '/api';
+  private readonly baseApiUrl =  'http://localhost:4200/api';
 
   getOrganizers(): Observable<Organizer[]> {
     return this.http.get<Organizer[]>(`${this.baseApiUrl}/organizers/`);

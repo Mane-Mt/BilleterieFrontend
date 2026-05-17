@@ -1,6 +1,6 @@
 import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OrganizerService, Organizer } from '../../../organizer-service';
+import { OrganizerService, Organizer } from '../../../services/organizer-service';
 
 @Component({
   selector: 'app-organizer-details',

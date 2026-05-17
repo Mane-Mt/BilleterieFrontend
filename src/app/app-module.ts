@@ -6,7 +6,7 @@ import { MyComponent } from './my-component/my-component';
 import { Artiste } from './artiste/artiste';
 import { ComponentForm } from './my-component/component-form/component-form';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FilterPokemonPipePipe } from './filter-pokemon--pipe-pipe';
+import { FilterPokemonPipePipe } from './pipes/filter-pokemon--pipe-pipe';
 import { provideHttpClient } from '@angular/common/http';
 import { ConcertList } from './pages/concerts/concert-list/concert-list';
 import { ConcertForm } from './pages/concerts/concert-form/concert-form';
@@ -49,6 +49,8 @@ import { Tickets } from './pages/tickets/tickets';
 import { ConfirmActionDialogComponent } from './pages/tickets/confirm-action-dialog-component/confirm-action-dialog-component';
 import { TransferDialogComponent } from './pages/tickets/transfer-dialog-component/transfer-dialog-component';
 import { ConcertImagePipe } from "./pipes/concert-image-pipe";
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 registerLocaleData(localeFr);
 const MATERIAL = [
   MatButtonModule,
@@ -102,6 +104,8 @@ const MATERIAL = [
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     ...MATERIAL,
     ConcertImagePipe
 ],

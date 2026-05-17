@@ -63,9 +63,7 @@ export class Concert {
   }
 
   getImage(): string {
-    console.log(flatEmojiMap);
     return flatEmojiMap[this.image.toLowerCase().trim()] || '🎤';
-
   }
 }
 
@@ -76,31 +74,27 @@ export class ConcertCreate {
   public location: string;
   public musicalGenre: string;
   public placeNumber: number;
-  public availableTickets: number;
-  public popularity: number;
   public price: number;
+  public popularity: number;
+  public organizerId: number;
   public date: string;
   public startTime: string;
   public endTime: string;
-  public organizerId: number;
-  public isValidated: boolean;
   public artistIds: number[];
 
   constructor(
-    image: string = '🎤',
+    image: string = 'autre',
     name: string = '',
     description: string = '',
     location: string = '',
     musicalGenre: string = '',
     placeNumber: number = 0,
-    availableTickets: number = 0,
-    popularity: number = 0,
     price: number = 0,
+    popularity: number = 1,
+    organizerId: number = 0,
     date: string = '',
     startTime: string = '18h',
     endTime: string = '20h',
-    organizerId: number = 0,
-    isValidated: boolean = false,
     artistIds: number[] = []
   ) {
     this.image = image;
@@ -109,14 +103,12 @@ export class ConcertCreate {
     this.location = location;
     this.musicalGenre = musicalGenre;
     this.placeNumber = placeNumber;
-    this.availableTickets = availableTickets;
-    this.popularity = popularity;
     this.price = price;
+    this.popularity = popularity;
+    this.organizerId = organizerId;
     this.date = date;
     this.startTime = startTime;
     this.endTime = endTime;
-    this.organizerId = organizerId;
-    this.isValidated = isValidated;
     this.artistIds = artistIds;
   }
 }
