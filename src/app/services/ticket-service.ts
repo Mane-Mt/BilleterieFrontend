@@ -9,7 +9,6 @@ import { Injectable } from '@angular/core';
 
 export class TicketService {
     
-   
     private readonly baseApiUrl = 'http://localhost:4200/api'
 
     constructor(private readonly http: HttpClient) { }
@@ -31,4 +30,9 @@ export class TicketService {
     refundTicket(id: number) {
       return this.http.put<Ticket>(`${this.baseApiUrl}/tickets/${id}/refund`,{});
     }
+
+    getTickets() {
+      return this.http.get<Ticket[]>(`${this.baseApiUrl}/tickets`);
+    }
+    
 }

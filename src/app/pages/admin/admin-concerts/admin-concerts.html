@@ -1,45 +1,56 @@
-<div class="admin-concerts-container">
-  <h2>Gestion des concerts</h2>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Nom</th>
-        <th>Lieu</th>
-        <th>Genre</th>
-        <th>Prix</th>
-        <th>Places</th>
-        <th>Statut</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (concert of concerts(); track concert.name) {
+<div class="organizer-list-container">
+  <div class="table-actions">
+    <button class="btn-create" routerLink="/concerts/create"> Créer un concert </button>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
         <tr>
-          <td>{{ concert.name }}</td>
-          <td>{{ concert.location }}</td>
-          <td>{{ concert.musicalGenre }}</td>
-          <td>{{ concert.price }} €</td>
-          <td>{{ concert.placeNumber }}</td>
-          <td>
+          <th></th>
+          <th>Nom</th>
+          <th>Genre</th>
+          <th>Lieu</th>
+          <th>Prix</th>
+          <th>Statut</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (concert of concerts(); track concert.id) {
+        <tr>
+          <td class="td-emoji">{{ concert.image || '🎵' }}</td>
+          <td data-label="Nom"><strong>{{ concert.name }}</strong></td>
+          <td data-label="Genre">
+            <span class="genre-pill">{{ concert.musicalGenre }}</span>
+          </td>
+          <td data-label="Lieu">{{ concert.location }}</td>
+          <td data-label="Prix"><strong class="price">{{ concert.price }} €</strong></td>
+          <td data-label="Statut">
             @if (concert.isValidated) {
-              <span class="badge badge-ok">Validé</span>
+            <span class="badge badge-ok">Validé</span>
             } @else {
-              <span class="badge badge-warn">À valider</span>
+            <span class="badge badge-warn">À valider</span>
             }
           </td>
-          <td>
-            @if (!concert.isValidated) {
-              <button class="btn-validate" (click)="validateConcert(concert.id!)">
-                Valider
+          <td data-label="Actions">
+            <div class="row-actions">
+              @if (!concert.isValidated) {
+              <button class="btn-action btn-action--ok" (click)="validateConcert(concert.id!)">
+                <mat-icon>check_circle</mat-icon> Valider
               </button>
-            }
-            <button class="btn-delete" (click)="deleteConcert(concert.id!)">
-              Supprimer
-            </button>
+              }
+              <button class="btn-action btn-action--danger" (click)="deleteConcert(concert.id!)">
+                <mat-icon>delete</mat-icon> Supprimer
+              </button>
+            </div>
           </td>
         </tr>
-      }
-    </tbody>
-  </table>
+        } @empty {
+        <tr>
+          <td colspan="7" class="td-empty">Aucun concert enregistré</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 </div>

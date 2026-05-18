@@ -1,5 +1,5 @@
 /* Application de la police Sora à l'ensemble du sous-composant */
-.artist-list-container,
+.ticket-list-container,
 .table-actions,
 .table-wrap, 
 table, 
@@ -12,7 +12,7 @@ strong {
   font-family: 'Sora', system-ui, sans-serif !important;
 }
 
-.artist-list-container {
+.ticket-list-container {
   padding: 24px 0;
 }
 
@@ -80,6 +80,27 @@ tr:hover td {
   background: #fafafe;
 }
 
+.quantity-badge {
+  background: #f0effd;
+  color: #534ab7;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.price {
+  color: #534ab7;
+  font-weight: 700;
+}
+
+.row-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
 .btn-voir {
   background: #f5f3ff;
   color: #534AB7;
@@ -89,7 +110,6 @@ tr:hover td {
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  margin-right: 6px;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -97,25 +117,6 @@ tr:hover td {
 
 .btn-voir:hover {
   background: #e0dbf5;
-}
-
-.btn-modifier {
-  background: #EAF3DE;
-  color: #3B6D11;
-  border: none;
-  padding: 5px 12px;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-right: 6px;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-}
-
-.btn-modifier:hover {
-  background: #dadfcf;
 }
 
 .btn-supprimer {
@@ -133,6 +134,13 @@ tr:hover td {
 
 .btn-supprimer:hover {
   background: #f5d2d2;
+}
+
+.td-empty {
+  text-align: center;
+  padding: 48px;
+  color: #aaa;
+  font-size: 14px;
 }
 
 /* ── Responsive Mobile (Card Layout) ──────────────────────────────────────── */

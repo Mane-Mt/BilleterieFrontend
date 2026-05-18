@@ -1,145 +1,164 @@
+/* Application de la police Sora à l'ensemble du sous-composant */
+.user-list-container,
+.table-actions,
+.table-wrap, 
+table, 
+th, 
+td, 
+button, 
+a,
+span, 
+strong {
+  font-family: 'Sora', system-ui, sans-serif !important;
+}
+
 .user-list-container {
-  font-family: 'Manrope', sans-serif;
-  padding: 32px;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 24px 0;
 }
 
-.user-list-container h2 {
-  font-size: 24px;
-  font-weight: 800;
-  color: #1a1a2e;
+/* Zone d'actions alignée à droite avec un espacement vers le bas */
+.table-actions {
+  display: flex;
+  justify-content: flex-end;
   margin-bottom: 24px;
+  padding-right: 4px;
 }
 
-/* --- Bouton Créer --- */
 .btn-create {
   background-color: #534AB7;
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 10px;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 600;
   cursor: pointer;
-  margin-bottom: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   transition: background 0.2s;
+  text-decoration: none;
 }
 
 .btn-create:hover {
   background-color: #3f37a0;
 }
 
-/* --- Tableau --- */
+.table-wrap {
+  overflow-x: auto;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
-  background: #ffffff;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 2px 12px rgba(83, 74, 183, 0.08);
 }
 
 thead {
-  background: linear-gradient(135deg, #f5f3ff, #eeedfe);
+  background: #fafafa;
 }
 
 th {
-  padding: 14px 16px;
+  padding: 12px 16px;
   text-align: left;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  color: #534AB7;
+  color: #534ab7;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
 }
 
 td {
-  padding: 14px 16px;
-  font-size: 14px;
+  padding: 13px 16px;
+  font-size: 13px;
   color: #1a1a2e;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid #f0f0f0;
+  vertical-align: middle;
 }
 
-tr:hover {
-  background-color: #f9f8ff;
+tr:hover td {
+  background: #fafafe;
 }
 
-/* --- Boutons Actions --- */
 .btn-voir {
   background: #f5f3ff;
   color: #534AB7;
   border: none;
-  padding: 6px 12px;
+  padding: 5px 12px;
   border-radius: 8px;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
   margin-right: 6px;
-  transition: background 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
 }
 
 .btn-voir:hover {
-  background: #eeedfe;
+  background: #e0dbf5;
 }
 
 .btn-modifier {
   background: #EAF3DE;
   color: #3B6D11;
   border: none;
-  padding: 6px 12px;
+  padding: 5px 12px;
   border-radius: 8px;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
   margin-right: 6px;
-  transition: background 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
 }
 
 .btn-modifier:hover {
-  background: #d4e8c2;
+  background: #dadfcf;
 }
 
 .btn-supprimer {
   background: #FCEBEB;
   color: #A32D2D;
   border: none;
-  padding: 6px 12px;
+  padding: 5px 12px;
   border-radius: 8px;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
+  display: inline-flex;
+  align-items: center;
 }
 
 .btn-supprimer:hover {
-  background: #f5d0d0;
+  background: #f5d2d2;
 }
 
-@media (max-width: 768px) {
-  .user-list-container {
-    padding: 16px;
+/* ── Responsive Mobile (Card Layout) ──────────────────────────────────────── */
+@media (max-width: 600px) {
+  .table-actions {
+    justify-content: center;
+    padding-right: 0;
   }
 
-  table, thead, tbody, th, td, tr {
-    display: block;
+  table, thead, tbody, th, td, tr { 
+    display: block; 
   }
 
-  thead {
-    display: none;
+  thead { 
+    display: none; 
   }
 
   tr {
+    border-top: 1px solid #f0f0f0;
+    padding: 14px 16px;
     background: #ffffff;
-    border-radius: 14px;
-    box-shadow: 0 2px 12px rgba(83, 74, 183, 0.08);
-    margin-bottom: 16px;
-    padding: 16px;
   }
 
   td {
     border: none;
-    padding: 6px 0;
+    padding: 5px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -149,14 +168,16 @@ tr:hover {
   td::before {
     content: attr(data-label);
     font-weight: 700;
-    color: #534AB7;
+    color: #534ab7;
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.04em;
+    flex-shrink: 0;
+    margin-right: 12px;
   }
 
   td:last-child {
-    margin-top: 12px;
+    margin-top: 8px;
     justify-content: flex-start;
     gap: 8px;
     flex-wrap: wrap;

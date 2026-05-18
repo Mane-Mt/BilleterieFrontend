@@ -74,19 +74,19 @@
   font-weight: 500;
 }
 
-.navbar__links a.admin-link {
-  color: #854f0b;
-}
-
-.navbar__links a.admin-link.active {
-  background: #faeeda;
-  color: #854f0b;
-}
 
 .navbar__user {
   display: flex;
   align-items: center;
   gap: 6px;
+}
+.navbar__user a.admin-link {
+  color: #854f0b;
+}
+
+.navbar__user a.admin-link.active {
+  background: #faeeda;
+  color: #854f0b;
 }
 
 .navbar__user mat-icon {

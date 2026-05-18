@@ -48,9 +48,10 @@ import { LOCALE_ID } from '@angular/core';
 import { Tickets } from './pages/tickets/tickets';
 import { ConfirmActionDialogComponent } from './pages/tickets/confirm-action-dialog-component/confirm-action-dialog-component';
 import { TransferDialogComponent } from './pages/tickets/transfer-dialog-component/transfer-dialog-component';
-import { ConcertImagePipe } from "./pipes/concert-image-pipe";
+import { ConcertImagePipe } from './pipes/concert-image-pipe';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AdminTickets } from './pages/admin/admin-tickets/admin-tickets';
 registerLocaleData(localeFr);
 const MATERIAL = [
   MatButtonModule,
@@ -97,6 +98,7 @@ const MATERIAL = [
     Tickets,
     ConfirmActionDialogComponent,
     TransferDialogComponent,
+    AdminTickets,
   ],
   imports: [
     BrowserModule,
@@ -107,8 +109,8 @@ const MATERIAL = [
     MatDatepickerModule,
     MatNativeDateModule,
     ...MATERIAL,
-    ConcertImagePipe
-],
+    ConcertImagePipe,
+  ],
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(),

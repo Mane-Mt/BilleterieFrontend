@@ -141,7 +141,7 @@ export class ConcertForm implements OnInit {
     this.concertService.createConcert(concert).subscribe({
       next: () => {
         this.isSubmitting = false;
-        this.router.navigate(['/admin/concerts']);
+        this.router.navigate(['/admin']);
       },
       error: (err) => {
         console.error('Erreur création concert :', err);
@@ -152,6 +152,6 @@ export class ConcertForm implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['/admin/concerts']);
+    this.router.navigate(['/admin']);
   }
 }

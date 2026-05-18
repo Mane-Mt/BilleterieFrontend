@@ -1,34 +1,37 @@
 <div class="organizer-list-container">
-  <h2>Liste des organisateurs</h2>
+  
+  <div class="table-actions">
+    <button class="btn-create" routerLink="/organizers/create">+ Créer un organisateur</button>
+  </div>
 
-  <button class="btn-create" routerLink="/organizers/create">+ Créer un organisateur</button>
-
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Prénom</th>
-        <th>Nom</th>
-        <th>Email</th>
-        <th>Téléphone</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (organizer of organizers(); track organizer.id) {
+  <div class="table-wrap">
+    <table>
+      <thead>
         <tr>
-          <td data-label="ID">{{ organizer.id }}</td>
-          <td data-label="Prénom">{{ organizer.firstname }}</td>
-          <td data-label="Nom">{{ organizer.lastname }}</td>
-          <td data-label="Email">{{ organizer.email }}</td>
-          <td data-label="Téléphone">{{ organizer.phone }}</td>
-          <td data-label="Actions">
-            <a class="btn-voir" routerLink="/organizers/{{ organizer.id }}">Voir</a>
-            <a class="btn-modifier" routerLink="/organizers/{{ organizer.id }}/edit">Modifier</a>
-            <button class="btn-supprimer" (click)="deleteOrganizer(organizer.id!)">Supprimer</button>
-          </td>
+          <th>ID</th>
+          <th>Prénom</th>
+          <th>Nom</th>
+          <th>Email</th>
+          <th>Téléphone</th>
+          <th>Actions</th>
         </tr>
-      }
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        @for (organizer of organizers(); track organizer.id) {
+          <tr>
+            <td data-label="ID">{{ organizer.id }}</td>
+            <td data-label="Prénom">{{ organizer.firstname }}</td>
+            <td data-label="Nom">{{ organizer.lastname }}</td>
+            <td data-label="Email">{{ organizer.email }}</td>
+            <td data-label="Téléphone">{{ organizer.phone }}</td>
+            <td data-label="Actions">
+              <a class="btn-voir" routerLink="/organizers/{{ organizer.id }}">Voir</a>
+              <a class="btn-modifier" routerLink="/organizers/{{ organizer.id }}/edit">Modifier</a>
+              <button class="btn-supprimer" (click)="deleteOrganizer(organizer.id!)">Supprimer</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 </div>

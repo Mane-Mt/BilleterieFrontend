@@ -7,24 +7,27 @@
   </div>
 
   <div class="navbar__links">
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" mat-button>
+    <!-- <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" mat-button>
       <mat-icon>home</mat-icon> Accueil
-    </a>
+    </a> -->
     <a routerLink="/concerts" routerLinkActive="active" mat-button>
       <mat-icon>queue_music</mat-icon> Concerts
     </a>
     <a routerLink="/tickets" routerLinkActive="active" mat-button>
       <mat-icon>confirmation_number</mat-icon> Mes tickets
     </a>
-    <a routerLink="/admin" routerLinkActive="active" mat-button class="admin-link">
+    <!-- <a routerLink="/admin" routerLinkActive="active" mat-button class="admin-link">
       <mat-icon>admin_panel_settings</mat-icon> Admin
-    </a>
+    </a> -->
   </div>
 
-  <div class="navbar__user">
-    <button mat-icon-button>
-      <mat-icon>account_circle</mat-icon>
-    </button>
-    <span class="navbar__username">Alex</span>
+  <div class="navbar__user ">
+     <a routerLink="/admin" routerLinkActive="active" mat-button class="admin-link" >
+      <button mat-icon-button>
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <span class="navbar__username">Espace Admin</span>
+    </a>
+    
   </div>
 </nav>

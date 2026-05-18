@@ -48,6 +48,7 @@ const routes: Routes = [
   path: 'admin', children: [
     { path: '', component: AdminDashboard },
     { path: 'concerts', component: AdminConcerts },
+    {path: 'concerts/create', component: ConcertForm }
   ]
 },
 {

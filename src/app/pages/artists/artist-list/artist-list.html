@@ -1,34 +1,37 @@
 <div class="artist-list-container">
-  <h2>Liste des artistes</h2>
+  
+  <div class="table-actions">
+    <button class="btn-create" routerLink="/artists/create">+ Créer un artiste</button>
+  </div>
 
-  <button class="btn-create" routerLink="/artists/create">+ Créer un artiste</button>
-
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Prénom</th>
-        <th>Nom</th>
-        <th>Email</th>
-        <th>Téléphone</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (artist of artists(); track artist.id) {
+  <div class="table-wrap">
+    <table>
+      <thead>
         <tr>
-          <td data-label="ID">{{ artist.id }}</td>
-          <td data-label="Prénom">{{ artist.firstname }}</td>
-          <td data-label="Nom">{{ artist.lastname }}</td>
-          <td data-label="Email">{{ artist.email }}</td>
-          <td data-label="Téléphone">{{ artist.phone }}</td>
-          <td data-label="Actions">
-            <a class="btn-voir" routerLink="/artists/{{ artist.id }}">Voir</a>
-            <a class="btn-modifier" routerLink="/artists/{{ artist.id }}/edit">Modifier</a>
-            <button class="btn-supprimer" (click)="deleteArtist(artist.id!)">Supprimer</button>
-          </td>
+          <th>ID</th>
+          <th>Prénom</th>
+          <th>Nom</th>
+          <th>Email</th>
+          <th>Téléphone</th>
+          <th>Actions</th>
         </tr>
-      }
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        @for (artist of artists(); track artist.id) {
+          <tr>
+            <td data-label="ID">{{ artist.id }}</td>
+            <td data-label="Prénom">{{ artist.firstname }}</td>
+            <td data-label="Nom">{{ artist.lastname }}</td>
+            <td data-label="Email">{{ artist.email }}</td>
+            <td data-label="Téléphone">{{ artist.phone }}</td>
+            <td data-label="Actions">
+              <a class="btn-voir" routerLink="/artists/{{ artist.id }}">Voir</a>
+              <a class="btn-modifier" routerLink="/artists/{{ artist.id }}/edit">Modifier</a>
+              <button class="btn-supprimer" (click)="deleteArtist(artist.id!)">Supprimer</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 </div>

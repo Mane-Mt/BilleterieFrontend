@@ -1,78 +1,74 @@
-<div class="dashboard-container">
-  <h2>Administration</h2>
+<div class="dashboard">
 
-  <!-- Cards de navigation -->
-  <div class="stats-grid">
-    <div class="stat-card" routerLink="/admin/concerts">
-      <span class="stat-icon">🎵</span>
-      <span class="stat-value">{{ loading() ? '...' : totalConcerts() }}</span>
-      <span class="stat-label">Concerts</span>
-    </div>
-
-    <div class="stat-card" routerLink="/users">
-      <span class="stat-icon">👤</span>
-      <span class="stat-value">{{ loading() ? '...' : totalUsers() }}</span>
-      <span class="stat-label">Utilisateurs</span>
-    </div>
-
-    <div class="stat-card" routerLink="/artists">
-      <span class="stat-icon">🎤</span>
-      <span class="stat-value">{{ loading() ? '...' : totalArtists() }}</span>
-      <span class="stat-label">Artistes</span>
-    </div>
-
-    <div class="stat-card" routerLink="/organizers">
-      <span class="stat-icon">🎪</span>
-      <span class="stat-value">{{ loading() ? '...' : totalOrganizers() }}</span>
-      <span class="stat-label">Organisateurs</span>
+  <!-- ── En-tête ──────────────────────────────────────────────────────────── -->
+  <div class="dashboard__header">
+    <div>
+      <span class="dashboard__eyebrow">Espace administration</span>
+      <h1 class="dashboard__title">Tableau de bord</h1>
     </div>
   </div>
 
-  <!-- Liste des concerts récents -->
-  <div class="recent-section">
-    <h3>Concerts récents</h3>
-    @if (loading()) {
-      <p>Chargement des concerts...</p>
-    } @else {
-      <table>
-        <thead>
-          <tr>
-            <th>Nom</th>
-            <th>Genre</th>
-            <th>Lieu</th>
-            <th>Prix</th>
-            <th>Statut</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (concert of recentConcerts(); track concert.name) {
-            <tr>
-              <td data-label="Nom">{{ concert.name }}</td>
-              <td data-label="Genre">{{ concert.musicalGenre }}</td>
-              <td data-label="Lieu">{{ concert.location }}</td>
-              <td data-label="Prix">{{ concert.price }} €</td>
-              <td data-label="Statut">
-                @if (concert.isValidated) {
-                  <span class="badge badge-ok">✅ Validé</span>
-                } @else {
-                  <span class="badge badge-warn">⏳ À valider</span>
-                }
-              </td>
-              <td data-label="Actions">
-                @if (!concert.isValidated) {
-                  <button class="btn-validate" (click)="validateConcert(concert.id!)">
-                    Valider
-                  </button>
-                }
-                <button class="btn-delete" (click)="deleteConcert(concert.id!)">
-                  Supprimer
-                </button>
-              </td>
-            </tr>
-          }
-        </tbody>
-      </table>
+  <!-- ── Cards de stats (cliquables → changent l'onglet) ──────────────────── -->
+  <div class="stats-grid">
+    @for (card of cards; track card.tab) {
+      <div
+        class="stat-card"
+        [class.stat-card--active]="activeTab === card.tab"
+        (click)="setTab(card.tab)">
+        <div class="stat-card__icon">{{ card.emoji }}</div>
+        <div class="stat-card__body">
+          <span class="stat-card__value">
+            {{ loading() ? '—' : card.signal() }}
+          </span>
+          <span class="stat-card__label">{{ card.label }}</span>
+        </div>
+        <!-- indicateur actif en bas de la card -->
+        <div class="stat-card__indicator"></div>
+      </div>
     }
   </div>
+
+  <!-- ── Section contenu dynamique ────────────────────────────────────────── -->
+  <div class="content-section">
+
+    <div class="content-section__header">
+      <h2 class="content-section__title">{{ sectionTitle }}</h2>
+     
+    </div>
+
+    <!-- Chargement -->
+    @if (loading()) {
+      <div class="loading-state">
+        <mat-spinner diameter="36"></mat-spinner>
+        <span>Chargement…</span>
+      </div>
+    }
+
+    <!-- ── Tableau CONCERTS ────────────────────────────────────────────────── -->
+    @if (!loading() && activeTab === 'concerts') {
+      <app-admin-concerts></app-admin-concerts>
+    }
+
+    <!-- ── Tableau UTILISATEURS ────────────────────────────────────────────── -->
+    @if (!loading() && activeTab === 'users') {
+      <app-user-list></app-user-list>
+    }
+
+    <!-- ── Tableau ARTISTES ────────────────────────────────────────────────── -->
+    @if (!loading() && activeTab === 'artists') {
+      <app-artist-list></app-artist-list>
+    }
+
+    <!-- ── Tableau ORGANISATEURS ───────────────────────────────────────────── -->
+    @if (!loading() && activeTab === 'organizers') {
+      <app-organizer-list></app-organizer-list>
+    }
+
+    <!-- ── Tableau TICKETS ─────────────────────────────────────────────────── -->
+    @if (!loading() && activeTab === 'tickets') {
+      <app-admin-tickets></app-admin-tickets>
+    }
+
+  </div>
+
 </div>
