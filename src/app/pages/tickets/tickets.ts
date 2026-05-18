@@ -75,7 +75,7 @@ export class Tickets {
         type: 'cancel',
         concertName: ticket.concert.name,
         ticketRef: ticket.reference,
-        amount: ticket.totalPrice
+        amount: (ticket.price * ticket.quantity)
       }
     });
     ref.afterClosed().subscribe((confirmed: boolean) => {
@@ -96,7 +96,7 @@ export class Tickets {
         type: 'refund',
         concertName: ticket.concert.name,
         ticketRef: ticket.reference,
-        amount: ticket.totalPrice
+        amount: (ticket.price*ticket.quantity)
       }
     });
     ref.afterClosed().subscribe((confirmed: boolean) => {

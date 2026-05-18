@@ -98,7 +98,7 @@
 
                 <div class="ticket-card__meta">
                     <span class="ticket-card__qty">× {{ ticket.quantity }} place(s)</span>
-                    <span class="ticket-card__price">{{ ticket.totalPrice | number:'1.2-2' }} €</span>
+                    <span class="ticket-card__price">{{ ticket.price*ticket.quantity | number:'1.2-2' }} €</span>
                     
                     <span class="status-badge" [class]="ticket.status">
                     @if (ticket.status === 'confirmed') { <mat-icon>check_circle</mat-icon> }

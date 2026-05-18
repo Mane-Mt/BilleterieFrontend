@@ -25,7 +25,7 @@
             <td data-label="Quantité">
               <span class="quantity-badge">{{ ticket.quantity }}</span>
             </td>
-            <td data-label="Prix Total"><strong class="price">{{ ticket.totalPrice  }} €</strong></td>
+            <td data-label="Prix Total"><strong class="price">{{ (ticket.concert.price * ticket.quantity)| number:'1.2-2' }}€</strong></td>
             <!-- <td data-label="Actions">
               <div class="row-actions">
                 <a class="btn-voir" routerLink="/tickets/{{ ticket.id }}">Voir</a>

@@ -76,8 +76,10 @@ export class ConcertDetails {
         ref.afterClosed().subscribe((result: string) => {
           if (result === 'tickets') {
             this.router.navigate(['/tickets']);
+          }else{
+            this.router.navigate(['']);
           }
-             this.router.navigate(['']);
+          
         });
       });
   }

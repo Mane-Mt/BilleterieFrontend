@@ -37,7 +37,7 @@
     <div class="ticket-preview__divider"></div>
     <div class="ticket-preview__bottom">
       <span class="ticket-preview__ref">{{'#djkdkdld' }}</span>
-      <span class="ticket-preview__price">{{  data.ticket.totalPrice | number:'1.2-2' }} €</span>
+      <span class="ticket-preview__price">{{(data.ticket.price * data.ticket.quantity) | number:'1.2-2' }} €</span>
     </div>
   </div>
 

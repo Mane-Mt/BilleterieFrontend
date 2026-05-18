@@ -25,6 +25,7 @@ export class AdminTickets implements OnInit {
 
   loadTickets(): void {
     this.ticketService.getTickets().subscribe((data: Ticket[]) => {
+      console.log(data);
       this.tickets.set(data);
       this.cdr.detectChanges();
     });

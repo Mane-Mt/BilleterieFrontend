@@ -4,7 +4,7 @@ export interface Ticket {
   id: number;
   concert: Concert;
   quantity: number;
-  totalPrice: number;
+  price: number;
   reference: string;
   status: 'confirmed' | 'pending' | 'cancelled' | 'transferred'; // Ajout de transferred
   buyerEmail: string; // Le destinataire actuel
